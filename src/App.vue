@@ -1,20 +1,32 @@
 <template>
   <div id="app">
     <div id="nav">
-      <header class="header" role="banner">
+      <header class="header" role="banner" v-bind:class="active" v-on:click.prevent>
         <h1 class="logo">
-          <a href="#"><span><img src="@/assets/Logo.svg" alt=""></span></a>
+          <router-link to="/">
+            <span><img src="@/assets/Logo.svg" alt=""></span>
+          </router-link>
         </h1>
         <div class="nav-wrap">
           <nav class="main-nav" role="navigation">
             <ul class="unstyled list-hover-slide">
-              <li><a href="#" class="house"><router-link to="/">.</router-link></a></li>
-              <li><a href="#" class="refresh"><router-link to="/Refresh">.</router-link></a></li>
-              <li><a href="#" class="help"><router-link to="/Help">.</router-link></a></li>
+              <router-link to="/"><li><img src="./assets/images/house.svg" alt=""/></li></router-link>
+              <router-link to="/Refresh"><li><img src="./assets/images/refresh.svg" alt=""></li></router-link>
+              <router-link to="/help"><li><img src="./assets/images/help.svg" alt=""></li></router-link>
             </ul>
           </nav>
         </div>
       </header>
+      <div class="account_notify">
+        <div class="main_notification">
+          <a href="" class="notification">
+            <img src="./assets/images/ring.svg" alt="" />
+          </a>
+          <router-link to="/Profile">
+            <img src="./assets/images/Person-Curtis.jpg" alt="" class="profile_img">
+          </router-link>
+        </div>
+      </div>
     </div>
     <router-view/>
   </div>
@@ -24,7 +36,9 @@
 import Home from "@/views/Home";
 export default {
   data: () => ({
+    nav_item: {
 
+    }
   }),
   components: {
     Home,
@@ -47,6 +61,7 @@ export default {
 }
 
 #nav {
+  background: #f5f5f6;
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -54,7 +69,6 @@ export default {
 
     &.router-link-exact-active {
       color: #42b983;
-      display: none;
     }
   }
 }
@@ -114,28 +128,17 @@ $white-off: #DFDBD9;
 
 // MAIN NAV
 .main-nav{
-  .house{
-    background: transparent url("assets/images/house.svg") 0 0 no-repeat padding-box;
-    width: 22px;
-    height: 20px;
-  }
-  .help{
-    background: transparent url("assets/images/help.svg") 0 0 no-repeat padding-box;
-    width: 22px;
-    height: 20px;
-  }
-  .refresh{
-    background: transparent url("assets/images/refresh.svg") 0 0 no-repeat padding-box;
-    width: 22px;
-    height: 20px;
-  }
+
   ul{
     li{
       margin: 75px 0 75px 0;
       padding: 30%;
       &:hover{
-        border-right: 4px solid #43bccd;
+        border-right: 5px solid #43bccd;
         cursor: pointer;
+      }
+      img{
+        filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(213deg) brightness(105%) contrast(103%);
       }
     }
   }
@@ -144,6 +147,23 @@ $white-off: #DFDBD9;
 .nav-wrap{
   position: relative;
   top: 10%;
+}
+
+.account_notify{
+  //text-align: right;
+  width: 80%;
+  padding-top: 2%;
+  background-color: #f5f5f6;
+  .main_notification{
+    display: flex;
+    align-items: center;
+    margin-left: 90%;
+  }
+  .profile_img{
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+  }
 }
 
 

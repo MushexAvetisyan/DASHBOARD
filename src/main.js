@@ -5,9 +5,15 @@ import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueApexCharts from 'vue-apexcharts'
+import Vuex from 'vuex'
 
+
+Vue.use(VueApexCharts)
+Vue.use(Vuex)
 library.add(faUserSecret)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('apexchart', VueApexCharts)
 
 Vue.config.productionTip = false
 

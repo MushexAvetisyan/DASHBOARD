@@ -1,0 +1,27 @@
+    change chart dynamycaly
+
+    updateChart() {
+      const max = 6;
+      const min = 0;
+      const newData = this.series[0].data.map(() => {
+        return Math.floor(Math.random() * (max - min + 1)) + min
+      })
+
+      const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
+
+      this.chartOptions = {
+        colors: [colors[Math.floor(Math.random()*colors.length)]]
+      };
+      this.series = [{
+        data: newData
+      }]
+    }
+
+
+
+----------------------------------------------------------------------------------
+
+
+
+
+
