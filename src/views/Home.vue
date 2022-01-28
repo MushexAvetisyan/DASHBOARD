@@ -1,30 +1,7 @@
 <template>
   <div class="home">
 
-    <div class="contain_header">
-      <div class="dashboard_Header">
-        <p>DASHBOARD</p>
-        <h2>Insights</h2>
-      </div>
-      <div class="progress">
-        <div class="progress_content">
-          <p>TOTAL TRANSITION</p>
-          <span>15</span>
-        </div>
-        <div class="progress_content">
-          <p>INITIATED <img src="../assets/images/circle-info.svg" alt=""></p>
-          <span>2</span>
-        </div>
-        <div class="progress_content">
-          <p>IN PROGRESS <img src="../assets/images/circle-info.svg" alt=""></p>
-          <span>5</span>
-        </div>
-        <div class="progress_content">
-          <p>COMPLETED <img src="../assets/images/circle-info.svg" alt=""></p>
-          <span>2</span>
-        </div>
-      </div>
-    </div>
+    <containHeader />
 
     <div class="line"></div>
 
@@ -43,20 +20,31 @@
     </div>
 
     <div class="chart_container">
-      <div class="chart_main" style="width: 1047px; height: 380px; background-color: white;">
+      <div class="chart_transition" style="width: 1047px; height: 380px; background-color: white;">
         <h4>TRANSITION STATE</h4>
+        <select class="filter_transition" v-model="selected">
+          <option v-for="filter in filters" :key="filter.name" :value="filter.value">
+            {{ filter.name }}
+          </option>
+        </select>
         <VueApexCharts class="chart_style" width="900" height="320" type="bar" :options="TransitionChartOptions" :series="seriesForTransitions"></VueApexCharts>
       </div>
 
-      <div class="chart_main second_chart" style="width: 580px; height: 380px; background-color: white;">
+      <div class="chart_Due_date second_chart" style="width: 580px; height: 380px; background-color: white;">
         <h4>DUE DATE</h4>
         <apexchart width="400" height="380" type="donut" :options="DueDateChartOptions" :series="seriesDueDate"></apexchart>
       </div>
     </div>
 
 
-    <div class="second_chart_1">
+    <div class="chart_cycle_time">
       <h4>CYCLE TIME</h4>
+      <select class="filter_Cyrcle" v-model="selected">
+        <option v-for="country in countries" v-bind:value="country.code">
+          {{ country.name }}
+        </option>
+      </select>
+      <VueApexCharts class="chart_style" width="1450" height="300" type="line" :options="CycleTimeChartOptions" :series="seriesForCycleTime"></VueApexCharts>
     </div>
 
     <div class="second_chart_container">
@@ -76,15 +64,16 @@
   </div>
 </template>
 
+
 <script>
 // @ is an alias to /src
-import HelloWorld from '../components/HelloWorld.vue'
 import VueApexCharts from 'vue-apexcharts'
+import containHeader from '../components/HomePageComponents/containHeader'
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
-    VueApexCharts
+    VueApexCharts,
+    containHeader
   },
 
   data: () => ({
@@ -102,7 +91,7 @@ export default {
       plotOptions:{
         bar:{
           distributed: true,
-          borderRadius: 15,
+          borderRadius: 10,
           columnWidth: '35%',
         }
       },
@@ -133,6 +122,36 @@ export default {
       data: [1, 5, 4, 3]
     }],
 
+    CycleTimeChartOptions: {
+      chart: {
+        id: 'Cycle-example',
+      toolbar: {
+        show: false
+        }
+      },
+      labels: ['No', 'Yes', ],
+      colors: ['#43BCCD', '#6D32A5'],
+      dataLabels: {
+        enabled: true,
+      },
+      xaxis:{
+        categories: ['TASKS APPROVING','KNOWLEDGE TRANSFER', 'PRODUCTION PARALLEL', 'LIVE EXECUTION', ]
+      },
+      yaxis: {
+        max: 30,
+        min: 0,
+        tickAmount: 3
+      },
+    },
+    seriesForCycleTime: [
+      {
+        data: [12, 8, 12, 14]
+      },
+      {
+        data: [9, 9, 18, 10]
+      }
+    ],
+
     DueDateChartOptions: {
       chart: {
         id: 'DueDateChart',
@@ -146,8 +165,35 @@ export default {
     },
     seriesDueDate: [3,2],
 
-    TaskReviewRateOptions: {},
+    TaskReviewRateOptions: {
+      chart: {
+        id: 'TaskReviewRate',
+      },
+      labels: ['Reviewed tasks (26)', 'Not reviewed tasks (18)'],
+      colors: ['#43BCCD', '#6D32A5'],
+
+      dataLabels: {
+        enabled: false,
+      }
+    },
     seriesTaskReviewRate: [26,18],
+
+    selected: 'all',
+
+    filters: [
+      {
+        name: 'All',
+        value: 'all'
+      },
+      {
+        name: 'Last',
+        value: 'last',
+      },
+      {
+        name: 'New',
+        value: 'new',
+      },
+    ],
   }),
 
 
@@ -158,10 +204,7 @@ export default {
 </script>
 
 
-<style scoped lang="scss">
-*{
-  font-family: CircularFontFamily;
-}
+<style  lang="scss">
 @font-face {
   font-family: "CircularFontFamily";
   src: local("CircularFontFamily"),
@@ -171,18 +214,9 @@ export default {
     background-color: #f5f5f6;
     min-height: 100vh;
   }
-  .contain_header{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding-top: 1%;
-    .progress{
-      display: flex;
-      div{
-        margin-left: 80px;
-      }
-    }
-  }
+
+
+
   .chart_container{
     display: flex;
     width: 80%;
@@ -190,7 +224,26 @@ export default {
       border-radius: 40px;
       margin-top: 15px;
     }
-    .chart_main{
+    .chart_transition, {
+      h4{
+        text-align: left;
+        margin: 30px 0px 0 30px;
+        color: #a3a6b9;
+        font-size: 14px;
+        float: left;
+      }
+      .filter_transition{
+        position: relative;
+        top: 22px;
+        right: 37%;
+        border: none;
+        font-size: 16px;
+        font-weight: 800;
+        outline: none;
+        padding: 5px;
+      }
+    }
+    .chart_Due_date{
       h4{
         text-align: left;
         margin: 30px 0px 0 30px;
@@ -202,6 +255,7 @@ export default {
       margin-left: 30px;
     }
   }
+
   .chart_style{
     ::v-deep {
       .apexcharts-yaxis-texts-g{
@@ -213,8 +267,12 @@ export default {
     .apexcharts-legend{
       display: none;
     }
+      .apexcharts-legend-marker{
+        padding-right: 15px;
+      }
     }
   }
+
   .second_chart_container{
     display: flex;
     width: 80%;
@@ -240,7 +298,8 @@ export default {
       }
     }
   }
-  .second_chart_1{
+
+  .chart_cycle_time{
     height: 380px;
     width: 80%;
     background-color: white;
@@ -251,8 +310,21 @@ export default {
       color: #a3a6b9;
       font-size: 14px;
       padding: 25px 0 0 25px;
+      float: left;
     }
+    .filter_Cyrcle{
+      position: relative;
+      top: 18px;
+      right: 43%;
+      border: none;
+      font-size: 16px;
+      font-weight: 800;
+      outline: none;
+      padding: 5px;
+    }
+
   }
+
   .transition_section{
     height: 120px;
     background-color: white;
@@ -275,6 +347,7 @@ export default {
       }
     }
   }
+
   .add_or_conclude{
 
     .btn-task{
@@ -295,25 +368,7 @@ export default {
       background: #F53361 0 0 no-repeat padding-box;
     }
   }
-  .progress_content{
-    text-align: left;
-    p{
-      color: #a3a6b9;
-      font-weight: 600;
-      font-size: 15px;
-    }
-    span{
-      color: black;
-      font-size: 23px;
-      font-weight: 700;
-    }
-    img{
-      position: relative;
-      top: 1px;
-      left: 5px;
-      width: 13px;
-    }
-  }
+
   .line{
     border-bottom: 2px solid #05081d;
     opacity: 0.1;
@@ -321,21 +376,7 @@ export default {
     margin-top: 25px;
     margin-bottom: 40px;
   }
-  .dashboard_Header{
-    p{
-      text-align: left;
-      font: normal normal medium 15px/50px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0;
-      color: #6D32A5;
-      text-transform: uppercase;
-      opacity: 1;
-    }
-    h2{
-      font-size: 50px;
-      font-weight: 900;
-      color: black;
-    }
-  }
+
+
+
 </style>
