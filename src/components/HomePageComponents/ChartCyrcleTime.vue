@@ -2,10 +2,10 @@
   <div class="app">
     <div class="chart_cycle_time">
       <h4>CYCLE TIME</h4>
-      <select class="filter_Cyrcle" v-model="selected">
-        <option v-for="country in countries" v-bind:value="country.code">
-          {{ country.name }}
-        </option>
+      <select class="filter_Cyrcle">
+<!--        <option v-for="country in countries" v-bind:value="country.code">-->
+<!--          {{ country.name }}-->
+<!--        </option>-->
       </select>
       <VueApexCharts class="chart_style" width="1450" height="300" type="line" :options="CycleTimeChartOptions" :series="seriesForCycleTime"></VueApexCharts>
     </div>

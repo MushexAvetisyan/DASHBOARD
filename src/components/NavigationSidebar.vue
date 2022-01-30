@@ -4,15 +4,18 @@
       <header class="header" role="banner">
         <h1 class="logo">
           <router-link to="/" class="ss">
-            <span><img src="@/assets/Logo.svg" alt=""></span>
+            <transition name="fade">
+              <span><img src="@/assets/Logo.svg" alt="" @click="togglemenu = !togglemenu"></span>
+            </transition>
+              <span v-show="togglemenu" class="pagetitle">TransitPru</span>
           </router-link>
         </h1>
         <div class="nav-wrap">
           <nav class="main-nav" role="navigation">
             <ul class="list-hover-slide">
-              <router-link to="/"><li :class='{"selected": selected === 0}' @click='changeSelected(0)'><img src="../assets/images/house.svg" alt=""/></li></router-link>
-              <router-link to="/Refresh"><li :class='{"selected": selected === 1}' @click='changeSelected(1)'><img src="../assets/images/refresh.svg" alt=""></li></router-link>
-              <router-link to="/help"><li><img src="../assets/images/help.svg" alt=""></li></router-link>
+              <router-link to="/"><li><img src="../assets/images/house.svg" alt=""/><span v-show="togglemenu">Dashboard</span></li></router-link>
+              <router-link to="/Refresh"><li><img src="../assets/images/refresh.svg" alt=""><span v-show="togglemenu">Transitions</span></li></router-link>
+              <router-link to="/help"><li><img src="../assets/images/help.svg" alt=""><span v-show="togglemenu">Support</span></li></router-link>
             </ul>
           </nav>
         </div>
@@ -34,7 +37,10 @@
 
 <script>
 export default {
-  name: 'NavigationSidebar'
+  name: 'NavigationSidebar',
+  data: () => ({
+    togglemenu: false,
+  })
 }
 </script>
 
@@ -52,9 +58,8 @@ export default {
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-      //color: #42b983;
       filter: brightness(0) saturate(100%) invert(72%) sepia(50%) saturate(551%) hue-rotate(139deg) brightness(85%) contrast(87%);
-      border-right: 5px solid #43bccd;
+      border-right: 6px solid #43bccd;
     }
   }
 }
@@ -75,7 +80,6 @@ $white-off: #DFDBD9;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 95px;
   background: #05081D 0 0 no-repeat padding-box;
   opacity: 1;
   .ss{
@@ -85,9 +89,6 @@ $white-off: #DFDBD9;
 }
 
 .logo{
-  text-transform: lowercase;
-  font: 300 2em $sans;
-  text-align: center;
   padding: 0; margin: 0;
 
   a{
@@ -99,12 +100,23 @@ $white-off: #DFDBD9;
 
     &:hover{
       color: #fff;
-      span{ color: $orange; }
     }
   }
   span{
     font-weight: 700;
     transition: .15s linear color;
+  }
+  .pagetitle{
+    color: white;
+    position: relative;
+    bottom: 12px;
+    font-size: 20px;
+    margin-left: 0;
+    margin-right: 15px;
+  }
+  img{
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 
@@ -112,15 +124,17 @@ $white-off: #DFDBD9;
 .main-nav{
   ul{
     li{
-      margin: 75px 0 75px 0;
-      padding: 30%;
+      margin: 75px 0 75px 15px;
+      padding: 35px 10px 35px 5px;
+      display: flex;
+      align-items: center;
     }
   }
 }
 
 .nav-wrap{
   position: relative;
-  top: 10%;
+  top: 15%;
 }
 
 .account_notify{
@@ -158,6 +172,12 @@ $white-off: #DFDBD9;
     position: relative;
     z-index: 1;
     transition: .35s ease color;
+    text-decoration: none;
+  }
+  span{
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
   }
 }
 </style>

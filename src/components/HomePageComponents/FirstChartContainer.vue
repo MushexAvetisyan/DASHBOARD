@@ -10,10 +10,9 @@
         </select>
         <VueApexCharts class="chart_style" width="900" height="320" type="bar" :options="TransitionChartOptions" :series="seriesForTransitions"></VueApexCharts>
       </div>
-
       <div class="chart_Due_date second_chart" style="width: 580px; height: 380px; background-color: white;">
-        <h4>DUE DATE</h4>
-        <apexchart width="400" height="380" type="donut" :options="DueDateChartOptions" :series="seriesDueDate"></apexchart>
+<!--        <h4>DUE DATE</h4>-->
+        <apexchart width="480" height="380" type="donut" :options="DueDateChartOptions" :series="seriesDueDate"></apexchart>
       </div>
     </div>
   </div>
@@ -61,6 +60,21 @@ export default {
         id: 'DueDateChart',
       },
       labels: ['Completed due date (3)', 'Nearing due date (2)'],
+
+      title: {
+        text: 'DUE DATE',
+        floating: true,
+        offsetX: -10,
+        offsetY: 10,
+        style: {
+          fontsize: '15px',
+          color: '#A3A6B9',
+          fontWeight: 600,
+          fontFamily: "CircularFontFamily"
+        }
+
+      },
+
       colors: ['#43BCCD', '#6D32A5'],
 
       dataLabels: {
@@ -69,10 +83,35 @@ export default {
       legend: {
         show: true,
         position: "left",
-        fontsize: '25px'
+        fontSize: '14px',
+        fontWeight: 600,
+        offsetX: -30,
+        offsetY: 100,
+        itemMargin: {
+          vertical: 20
+        },
+        markers: {
+          width: 15,
+          height: 15,
+          offsetY: 2,
+          offsetX: -5
+        }
+      },
+      plotOptions: {
+        pie: {
+          startAngle: 0,
+          endAngle: 360,
+          offsetY: 55,
+          customScale: 0.9,
+          donut: {
+            size: '55%',
+          },
+        }
       }
     },
     seriesDueDate: [3,2],
+
+
 
     selected: 'all',
 
