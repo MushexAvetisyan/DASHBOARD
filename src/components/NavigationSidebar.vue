@@ -2,14 +2,14 @@
   <div class="app">
     <div id="nav">
       <header class="header" :class="{ fullSize : isFullSize }" role="banner">
-        <h1 class="logo">
+        <div class="logo">
           <router-link to="/" class="ss">
               <span><img src="@/assets/Logo.svg" alt="" @click="isFullSize = !isFullSize"></span>
             <transition name="fade" mode="out-in">
               <span v-if="isFullSize" :class="{ Show : isShow }" class="pagetitle">TransitPru</span>
             </transition>
           </router-link>
-        </h1>
+        </div>
         <div class="nav-wrap">
           <nav class="main-nav" role="navigation">
             <ul class="list-hover-slide">
@@ -85,7 +85,7 @@ $white-off: #DFDBD9;
 // HEADER STYLES
 .header{
   width: 96px;
-  transition: 0.5s;
+  transition: 0.3s;
   position: fixed;
   left: 0;
   top: 0;
@@ -95,12 +95,14 @@ $white-off: #DFDBD9;
   .ss{
     border: none !important;
     filter: none !important;
+    display: flex;
   }
 }
 .fullSize {
   width: 185px;
-  transition: 0.5s;
+  transition: 0.3s;
 }
+
 
 .logo{
   padding: 0; margin: 0;
@@ -122,7 +124,7 @@ $white-off: #DFDBD9;
   .pagetitle{
     color: white;
     position: relative;
-    bottom: 12px;
+    top: 8px;
     font-size: 20px;
     margin-left: 0;
     margin-right: 15px;

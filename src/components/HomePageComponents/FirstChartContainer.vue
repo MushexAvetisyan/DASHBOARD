@@ -11,7 +11,7 @@
         <VueApexCharts class="chart_style" width="900" height="320" type="bar" :options="TransitionChartOptions" :series="seriesForTransitions"></VueApexCharts>
       </div>
       <div class="chart_Due_date second_chart" style="width: 580px; height: 380px; background-color: white;">
-<!--        <h4>DUE DATE</h4>-->
+
         <apexchart width="480" height="380" type="donut" :options="DueDateChartOptions" :series="seriesDueDate"></apexchart>
       </div>
     </div>
