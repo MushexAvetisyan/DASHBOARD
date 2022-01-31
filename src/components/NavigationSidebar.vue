@@ -1,21 +1,21 @@
 <template>
   <div class="app">
     <div id="nav">
-      <header class="header" role="banner">
+      <header class="header" :class="{ fullSize : isFullSize }" role="banner">
         <h1 class="logo">
           <router-link to="/" class="ss">
-            <transition name="fade">
-              <span><img src="@/assets/Logo.svg" alt="" @click="togglemenu = !togglemenu"></span>
+              <span><img src="@/assets/Logo.svg" alt="" @click="isFullSize = !isFullSize"></span>
+            <transition name="fade" mode="out-in">
+              <span v-if="isFullSize" :class="{ Show : isShow }" class="pagetitle">TransitPru</span>
             </transition>
-              <span v-show="togglemenu" class="pagetitle">TransitPru</span>
           </router-link>
         </h1>
         <div class="nav-wrap">
           <nav class="main-nav" role="navigation">
             <ul class="list-hover-slide">
-              <router-link to="/"><li><img src="../assets/images/house.svg" alt=""/><span v-show="togglemenu">Dashboard</span></li></router-link>
-              <router-link to="/Refresh"><li><img src="../assets/images/refresh.svg" alt=""><span v-show="togglemenu">Transitions</span></li></router-link>
-              <router-link to="/help"><li><img src="../assets/images/help.svg" alt=""><span v-show="togglemenu">Support</span></li></router-link>
+              <router-link to="/"><li><img src="../assets/images/house.svg" alt=""/><span v-if="isFullSize" :class="{ Show : isShow }" >Dashboard</span></li></router-link>
+              <router-link to="/Refresh"><li><img src="../assets/images/refresh.svg" alt=""><span v-if="isFullSize" :class="{ Show : isShow }" >Transitions</span></li></router-link>
+              <router-link to="/help"><li><img src="../assets/images/help.svg" alt=""><span v-if="isFullSize" :class="{ Show : isShow }" >Support</span></li></router-link>
             </ul>
           </nav>
         </div>
@@ -39,12 +39,19 @@
 export default {
   name: 'NavigationSidebar',
   data: () => ({
-    togglemenu: false,
+    isFullSize: false,
+    isShow: false,
   })
 }
 </script>
 
 <style  lang="scss">
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -57,6 +64,7 @@ export default {
   a {
     font-weight: bold;
     color: #2c3e50;
+    transition: all 0.1s ease;
     &.router-link-exact-active {
       filter: brightness(0) saturate(100%) invert(72%) sepia(50%) saturate(551%) hue-rotate(139deg) brightness(85%) contrast(87%);
       border-right: 6px solid #43bccd;
@@ -76,6 +84,8 @@ $white-off: #DFDBD9;
 
 // HEADER STYLES
 .header{
+  width: 96px;
+  transition: 0.5s;
   position: fixed;
   left: 0;
   top: 0;
@@ -87,6 +97,10 @@ $white-off: #DFDBD9;
     filter: none !important;
   }
 }
+.fullSize {
+  width: 185px;
+  transition: 0.5s;
+}
 
 .logo{
   padding: 0; margin: 0;
@@ -96,7 +110,6 @@ $white-off: #DFDBD9;
     padding: 1em 0;
     color: $white-off;
     text-decoration: none;
-    transition: .15s linear color;
 
     &:hover{
       color: #fff;
@@ -138,7 +151,6 @@ $white-off: #DFDBD9;
 }
 
 .account_notify{
-  //text-align: right;
   width: 80%;
   padding-top: 2%;
   background-color: #f5f5f6;

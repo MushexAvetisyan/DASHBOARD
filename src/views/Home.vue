@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-    <containHeader />
+    <ProgressHeader />
 
     <div class="line"></div>
 
@@ -27,6 +27,8 @@
 
     <RecentTransitions />
 
+    <RecentTasksToReview />
+
     <router-view />
   </div>
 </template>
@@ -35,21 +37,23 @@
 <script>
 // @ is an alias to /src
 import VueApexCharts from 'vue-apexcharts'
-import containHeader from '../components/HomePageComponents/containHeader'
+import ProgressHeader from '../components/HomePageComponents/ProgressHeader'
 import transition_section from '../components/HomePageComponents/transition_section'
 import FirstChartContainer from "../components/HomePageComponents/FirstChartContainer";
 import ChartCyrcleTime from "../components/HomePageComponents/ChartCyrcleTime";
 import RecentTransitions from "../components/HomePageComponents/RecentTransitions";
+import RecentTasksToReview  from "../components/HomePageComponents/RecentTasksToReview";
 
 export default {
   name: 'Home',
   components: {
     VueApexCharts,
-    containHeader,
+    ProgressHeader,
     transition_section,
     FirstChartContainer,
     ChartCyrcleTime,
-    RecentTransitions
+    RecentTransitions,
+    RecentTasksToReview
   },
 
   data: () => ({

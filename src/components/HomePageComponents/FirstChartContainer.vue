@@ -22,6 +22,10 @@
 import VueApexCharts from 'vue-apexcharts'
 export default {
   name: "FirstChartContainer",
+  components: {
+    VueApexCharts,
+
+  },
   data: () => ({
     TransitionChartOptions: {
       chart: {
@@ -130,10 +134,6 @@ export default {
       },
     ],
   }),
-  components: {
-    VueApexCharts,
-
-  }
 }
 </script>
 
@@ -155,14 +155,15 @@ export default {
     }
     .filter_transition{
       position: relative;
-      top: 22px;
+      top: 24px;
       right: 37%;
       border: none;
       font-size: 16px;
       font-weight: 800;
       outline: none;
-      padding: 5px;
+      padding: 5px 0 0 0;
       cursor: pointer;
+      background: none;
     }
   }
   .chart_Due_date{

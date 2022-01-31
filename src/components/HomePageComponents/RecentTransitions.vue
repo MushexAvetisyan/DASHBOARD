@@ -1,29 +1,28 @@
 <template>
   <div class="app">
     <div class="Recent_container">
-      <h4>RECENT TRANSITIONS</h4>
-      <div class="Transitions" v-for="(item, index) in Transitions" :key="index">
-        <h2>{{ item.title }}</h2>
-        <div class="main_transitions">
-          <span>MY ROLE</span>
-          <p class="role second">{{item.role}}</p>
-        </div>
-        <div class="main_transitions">
-          <span>STATUS</span>
-          <p class="status">{{item.status.toUpperCase()}}</p>
-        </div>
-        <div class="main_transitions">
-          <span>DAYS TO GO</span>
-          <p>{{item.day}}</p>
-        </div>
-        <img v-if="item.icon" :src="item.icon" alt="icon">
+      <div>
+        <h4>RECENT TRANSITIONS</h4>
+        <div class="Transitions" v-for="(item, index) in Transitions" :key="index">
+          <h2>{{ item.title }}</h2>
+          <div class="main_transitions">
+            <span>MY ROLE</span>
+            <p class="role second">{{item.role}}</p>
+          </div>
+          <div class="main_transitions">
+            <span>STATUS</span>
+            <p class="status" :style="`background: ${item.color}`">{{item.status.toUpperCase()}}</p>
+          </div>
+          <div class="main_transitions">
+            <span>DAYS TO GO</span>
+            <p class="data">{{item.day}}</p>
+          </div>
+          <button @click="toggleAccordion()" :aria-expanded="isOpen" :aria-controls="`collapse${_uid}`" class="open_accordion">
+            <img v-if="item.icon" :src="item.icon" alt="icon">
+            <slot name="content" />
+          </button>
       </div>
-<!--      <div class="Transitions">-->
-
-<!--      </div>-->
-<!--      <div class="Transitions">-->
-
-<!--      </div>-->
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +33,7 @@
 export default {
   name: "RecentTransitions",
   data: () => ({
+    isOpen: true,
     Transitions: [
       {
         title: "UI/UX Designer",
@@ -41,6 +41,7 @@ export default {
         status: 'Ready To Be Concluded',
         day: 26,
         icon: require("@/assets/images/chevron-thin-down.svg"),
+        color: '#F53361'
       },
       {
         title: "Tech Lead",
@@ -48,6 +49,7 @@ export default {
         status: 'production parallel',
         day: 26,
         icon: require("@/assets/images/chevron-thin-down.svg"),
+        color: '#6D32A5',
       },
       {
         title: "HR Manager",
@@ -55,9 +57,15 @@ export default {
         status: 'knowledge transfer',
         day: 26,
         icon: require("@/assets/images/chevron-thin-down.svg"),
+        color: '#43BCCD',
       },
     ],
-  })
+  }),
+  methods: {
+    toggleAccordion() {
+      this.isOpen = !this.isOpen;
+    }
+  }
 }
 </script>
 
@@ -65,7 +73,7 @@ export default {
 
 <style scoped lang="scss">
 .Recent_container{
-  height: 380px;
+  height: 420px;
   width: 80%;
   background-color: white;
   border-radius: 30px;
@@ -90,10 +98,12 @@ export default {
 
   h2{
     font-weight: bold;
+    color: black;
   }
   .role{
     font-weight: bold;
     font-size: 16px;
+    color: black;
   }
   .status{
     background-color: #F53361;
@@ -102,6 +112,10 @@ export default {
     color: white;
     font-weight: 800;
     letter-spacing: 2px;
+  }
+  .data{
+    color: black;
+    font-weight: 800;
   }
   img{
     cursor: pointer;
@@ -113,6 +127,10 @@ export default {
   }
   .main_transitions{
     text-align: left;
+  }
+  .open_accordion{
+    background: none;
+    border: none;
   }
 }
 </style>

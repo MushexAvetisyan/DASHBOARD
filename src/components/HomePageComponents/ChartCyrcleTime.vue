@@ -23,10 +23,16 @@ export default {
           show: false
         }
       },
-      labels: ['No', 'Yes', ],
+      labels: ['Average Cycle time', 'Agreed TAT', ],
       colors: ['#43BCCD', '#6D32A5'],
       dataLabels: {
         enabled: true,
+        background: {
+          enabled: true,
+          borderRadius: 50,
+          foreColor: '#fff',
+          padding: 5,
+        }
       },
       xaxis:{
         categories: ['TASKS APPROVING','KNOWLEDGE TRANSFER', 'PRODUCTION PARALLEL', 'LIVE EXECUTION', ]
@@ -39,9 +45,11 @@ export default {
     },
     seriesForCycleTime: [
       {
+        name: 'Average Cycle time',
         data: [12, 8, 12, 14]
       },
       {
+        name: 'Agreed TAT',
         data: [9, 9, 18, 10]
       }
     ],
