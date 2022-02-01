@@ -1,21 +1,51 @@
 <template>
   <div class="app">
     <div id="nav">
-      <header class="header" :class="{ fullSize : isFullSize }" role="banner">
+      <header
+          class="header"
+          :class="{ fullSize : isFullSize }"
+          role="banner">
+
         <div class="logo">
           <router-link to="/" class="ss">
-              <span><img src="@/assets/Logo.svg" alt="" @click="isFullSize = !isFullSize"></span>
-            <transition name="fade" mode="out-in">
-              <span v-if="isFullSize" :class="{ Show : isShow }" class="pagetitle">TransitPru</span>
+              <span>
+                <img src="@/assets/Logo.svg"
+                     alt=""
+                     @click="isFullSize = !isFullSize">
+              </span>
+            <transition
+                name="fade"
+                mode="out-in">
+              <span
+                  v-if="isFullSize"
+                  :class="{ Show : isShow }"
+                  class="pagetitle">TransitPru
+              </span>
             </transition>
           </router-link>
         </div>
+
         <div class="nav-wrap">
           <nav class="main-nav" role="navigation">
             <ul class="list-hover-slide">
-              <router-link to="/"><li><img src="../assets/images/house.svg" alt=""/><span v-if="isFullSize" :class="{ Show : isShow }" >Dashboard</span></li></router-link>
-              <router-link to="/Refresh"><li><img src="../assets/images/refresh.svg" alt=""><span v-if="isFullSize" :class="{ Show : isShow }" >Transitions</span></li></router-link>
-              <router-link to="/help"><li><img src="../assets/images/help.svg" alt=""><span v-if="isFullSize" :class="{ Show : isShow }" >Support</span></li></router-link>
+              <router-link to="/">
+                <li>
+                  <img src="../assets/images/house.svg" alt=""/>
+                  <span v-if="isFullSize" :class="{ Show : isShow }" >Dashboard</span>
+                </li>
+              </router-link>
+              <router-link to="/Refresh">
+                <li>
+                  <img src="../assets/images/refresh.svg" alt="">
+                  <span v-if="isFullSize" :class="{ Show : isShow }" >Transitions</span>
+                </li>
+              </router-link>
+              <router-link to="/help">
+                <li>
+                  <img src="../assets/images/help.svg" alt="">
+                  <span v-if="isFullSize" :class="{ Show : isShow }" >Support</span>
+                </li>
+              </router-link>
             </ul>
           </nav>
         </div>
@@ -35,6 +65,9 @@
   </div>
 </template>
 
+
+
+
 <script>
 export default {
   name: 'NavigationSidebar',
@@ -45,13 +78,9 @@ export default {
 }
 </script>
 
+
+
 <style  lang="scss">
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -71,7 +100,6 @@ export default {
     }
   }
 }
-
 // FONTS
 $sans: 'Source Sans Pro', Helvetica, Arial, sans-serif;
 
@@ -85,7 +113,7 @@ $white-off: #DFDBD9;
 // HEADER STYLES
 .header{
   width: 96px;
-  transition: 0.3s;
+  transition: 0.2s;
   position: fixed;
   left: 0;
   top: 0;
@@ -100,10 +128,9 @@ $white-off: #DFDBD9;
 }
 .fullSize {
   width: 185px;
-  transition: 0.3s;
+  transition: 0.2s;
+  transform: translateX(-10px);
 }
-
-
 .logo{
   padding: 0; margin: 0;
 
@@ -125,73 +152,73 @@ $white-off: #DFDBD9;
     color: white;
     position: relative;
     top: 8px;
+    right: 60px;
     font-size: 20px;
-    margin-left: 0;
-    margin-right: 15px;
-  }
+}
   img{
-    margin-left: 15px;
-    margin-right: 15px;
+  margin-left: 15px;
+  margin-right: 70px;
+  padding-left: 10px;
   }
 }
-
 // MAIN NAV
 .main-nav{
   ul{
     li{
-      margin: 75px 0 75px 15px;
-      padding: 35px 10px 35px 5px;
+      margin: 75px 0 75px 25px;
+      padding: 35px 120px 35px 15px;
       display: flex;
       align-items: center;
     }
   }
 }
 
-.nav-wrap{
+  .nav-wrap{
   position: relative;
   top: 15%;
-}
+  }
 
-.account_notify{
-  width: 80%;
-  padding-top: 2%;
-  background-color: #f5f5f6;
-  .main_notification{
-    display: flex;
-    align-items: center;
-    margin-left: 90%;
+  .account_notify{
+      width: 80%;
+      padding-top: 2%;
+      background-color: #f5f5f6;
+    .main_notification{
+      display: flex;
+      align-items: center;
+      margin-left: 90%;
 
-    a{
+      a{
       border: none !important;
       filter: none !important;
     }
+    }
+    .profile_img{
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+    }
   }
-  .profile_img{
-    width: 66px;
-    height: 66px;
-    border-radius: 50%;
-  }
-}
 
 
 // HOVER SLIDE EFFECT
 .list-hover-slide{
-  li{
-    position: relative;
-    overflow: hidden;
-  }
+li{
+position: relative;
+overflow: hidden;
+}
 
-  a{
-    display: block;
-    position: relative;
-    z-index: 1;
-    transition: .35s ease color;
-    text-decoration: none;
-  }
-  span{
-    color: white;
-    font-weight: 600;
-    font-size: 15px;
+a{
+display: block;
+position: relative;
+z-index: 1;
+transition: .35s ease color;
+text-decoration: none;
+}
+span{
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  margin-left: 15px;
   }
 }
 </style>

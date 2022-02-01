@@ -3,7 +3,9 @@
     <div class="Recent_container">
       <div>
         <h4>RECENT TRANSITIONS</h4>
-        <div class="Transitions" v-for="(item, index) in Transitions" :key="index">
+        <div class="Transitions"
+             v-for="(item, index) in Transitions"
+             :key="index">
           <h2>{{ item.title }}</h2>
           <div class="main_transitions">
             <span>MY ROLE</span>
@@ -17,9 +19,8 @@
             <span>DAYS TO GO</span>
             <p class="data">{{item.day}}</p>
           </div>
-          <button @click="toggleAccordion()" :aria-expanded="isOpen" :aria-controls="`collapse${_uid}`" class="open_accordion">
+          <button @click="toggleAccordion" class="open_accordion">
             <img v-if="item.icon" :src="item.icon" alt="icon">
-            <slot name="content" />
           </button>
       </div>
       </div>
@@ -30,8 +31,10 @@
 
 
 <script>
+
 export default {
   name: "RecentTransitions",
+
   data: () => ({
     isOpen: true,
     Transitions: [
@@ -62,9 +65,7 @@ export default {
     ],
   }),
   methods: {
-    toggleAccordion() {
-      this.isOpen = !this.isOpen;
-    }
+
   }
 }
 </script>

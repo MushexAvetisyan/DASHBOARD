@@ -2,15 +2,29 @@
   <div class="app">
     <div class="chart_cycle_time">
       <h4>CYCLE TIME</h4>
-      <select class="filter_Cyrcle">
-<!--        <option v-for="country in countries" v-bind:value="country.code">-->
-<!--          {{ country.name }}-->
-<!--        </option>-->
-      </select>
-      <VueApexCharts class="chart_style" width="1450" height="300" type="line" :options="CycleTimeChartOptions" :series="seriesForCycleTime"></VueApexCharts>
+      <main class="filter_Cyrcle">
+      </main>
+      <section class="Dates">
+        <span
+            v-for="(item, index) in DatesInfo"
+            :key="index">
+          {{ item.name.toUpperCase() }}
+          <p>{{item.day}}</p>
+        </span>
+      </section>
+      <VueApexCharts
+          class="chart_style"
+          width="1450"
+          height="310"
+          type="line"
+          :options="CycleTimeChartOptions"
+          :series="seriesForCycleTime">
+      </VueApexCharts>
     </div>
   </div>
 </template>
+
+
 
 <script>
 import VueApexCharts from 'vue-apexcharts'
@@ -23,7 +37,14 @@ export default {
           show: false
         }
       },
-      labels: ['Average Cycle time', 'Agreed TAT', ],
+      legend: {
+        show: true,
+        showForSingleSeries: true,
+        showForNullSeries: true,
+        showForZeroSeries: true,
+        position: 'top',
+        labels: ['Average Cycle time', 'Agreed TAT', ],
+      },
       colors: ['#43BCCD', '#6D32A5'],
       dataLabels: {
         enabled: true,
@@ -35,7 +56,15 @@ export default {
         }
       },
       xaxis:{
-        categories: ['TASKS APPROVING','KNOWLEDGE TRANSFER', 'PRODUCTION PARALLEL', 'LIVE EXECUTION', ]
+        categories: ['TASKS APPROVING','KNOWLEDGE TRANSFER', 'PRODUCTION PARALLEL', 'LIVE EXECUTION', ],
+        tickPlacement: 'between',
+        labels: {
+          style: {
+            colors: ['#A3A6B9','#A3A6B9','#A3A6B9','#A3A6B9','#A3A6B9',],
+            fontSize: '10px',
+            fontWeight: 600
+          }
+        }
       },
       yaxis: {
         max: 30,
@@ -46,19 +75,49 @@ export default {
     seriesForCycleTime: [
       {
         name: 'Average Cycle time',
-        data: [12, 8, 12, 14]
+        data: [12, 5, 14, 17]
       },
       {
         name: 'Agreed TAT',
         data: [9, 9, 18, 10]
       }
     ],
+    books: [
+      { title: "All" },
+      { title: "Last" },
+      { title: "New" },
+    ],
+
+    DatesInfo: [
+      {
+        name: 'tasks approving',
+        day: '12 days (avg.)'
+      },
+      {
+        name: 'knowledge',
+        day: '4 days (avg.)'
+      },{
+        name: 'production',
+        day: '13 days (avg.)'
+      },
+      {
+        name: 'live',
+        day: '8 days (avg.)'
+      },
+      {
+        name: 'total',
+        day: '37 days (avg.)'
+      }
+    ]
   }),
   components: {
     VueApexCharts
   }
 }
 </script>
+
+
+
 
 <style scoped lang="scss">
 .chart_cycle_time{
@@ -71,18 +130,36 @@ export default {
     text-align: left;
     color: #a3a6b9;
     font-size: 14px;
-    padding: 25px 0 0 25px;
+    padding: 27px 0 0 25px;
     float: left;
   }
   .filter_Cyrcle{
+    width: 95px;
+    cursor: pointer;
     position: relative;
-    top: 18px;
-    right: 43%;
-    border: none;
-    font-size: 16px;
-    font-weight: 800;
-    outline: none;
-    padding: 5px;
+    right: 575px;
+    top: 23px;
+    margin-top: 0;
+    z-index: 1;
+  }
+
+  .Dates{
+    display: flex;
+    align-items: baseline;
+    width: 60%;
+    margin: 0 37%;
+    padding: 0;
+    text-align: left;
+    span{
+      margin-top: 25px;
+      color: #AEB1C2;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    p{
+      color: black;
+      font-weight: 800;
+    }
   }
 
   .chart_style{
@@ -98,6 +175,48 @@ export default {
       }
       .apexcharts-legend-marker{
         padding-right: 15px;
+      }
+    }
+  }
+  .select_input{
+    ::v-deep{
+      .vs__dropdown-toggle{
+        cursor: pointer;
+        border: none;
+        padding: 0;
+        display: flex;
+        align-items: baseline;
+      }
+      .vs__actions{
+        padding: 0 30px 0 3px;
+        display: block;
+        svg{
+          fill: black;
+        }
+      }
+      .vs__dropdown-menu{
+        min-width: 75px;
+      }
+      .vs__clear{
+        display: none;
+      }
+      .vs__search{
+        //display: none;
+        width: 65%;
+        margin: -2px 0 0 0;
+        padding: 0;
+        color: black;
+        font-weight: 800;
+      }
+      .vs__selected{
+        margin: 0;
+        color: black;
+        font-weight: 800;
+        width: 45px;
+      }
+      .vs__selected-options{
+        flex-wrap: nowrap;
+        align-items: center;
       }
     }
   }

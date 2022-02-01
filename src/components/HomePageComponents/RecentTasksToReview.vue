@@ -2,7 +2,9 @@
   <div class="app">
     <div class="main_content">
       <h4>Recent tasks to review</h4>
-      <div class="ShortTask" v-for="(task, index) in TaskReview" :key="index">
+      <div class="ShortTask"
+           v-for="(task, index) in TaskReview"
+           :key="index">
         <h4 class="Task_Date">{{task.date}}</h4>
         <h4 class="Task_Title">{{task.title}}</h4>
         <h4 class="Task_Project">{{task.Project}}</h4>
@@ -10,7 +12,9 @@
           <h4 class="Task">{{task.task}}</h4>
         </div>
         <div class="CommentSection">
-          <div class="Main_comment_content" v-for="(text, icon) in TaskCommentSection" :key="icon">
+          <div class="Main_comment_content"
+               v-for="(text, icon) in TaskCommentSection"
+               :key="icon">
             <img v-if="text.icon" :src="text.icon" alt="icon">
             <span v-if="text.count">{{text.count}}</span>
             <p>{{text.label}}</p>
@@ -24,6 +28,8 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   data: () => ({
@@ -35,14 +41,10 @@ export default {
         task: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
       }
     ],
+
     TaskCommentSection: [
       {
         count: 10,
@@ -66,6 +68,8 @@ export default {
   })
 }
 </script>
+
+
 
 <style scoped lang="scss">
 .app{

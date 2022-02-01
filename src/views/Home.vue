@@ -15,7 +15,7 @@
 
       <div class="Review_task_chart" style="width: 580px; height: 380px; background-color: white;">
         <h4>TASKS REVIEW RATE</h4>
-        <apexchart width="400" height="380" type="donut" :options="TaskReviewRateOptions" :series="seriesTaskReviewRate"></apexchart>
+        <apexchart width="430" height="380" type="donut" :options="TaskReviewRateOptions" :series="seriesTaskReviewRate"></apexchart>
       </div>
 
       <div class="completion_rate" style="width: 1047px; height: 380px; background-color: white;">
@@ -144,6 +144,34 @@ export default {
 
       dataLabels: {
         enabled: false,
+      },
+      legend: {
+        show: true,
+        position: "left",
+        fontSize: '12px',
+        fontWeight: 600,
+        offsetX: -20,
+        offsetY: 30,
+        itemMargin: {
+          vertical: 20
+        },
+        markers: {
+          width: 15,
+          height: 15,
+          offsetY: 2,
+          offsetX: -10
+        }
+      },
+      plotOptions: {
+        pie: {
+          startAngle: 0,
+          endAngle: 360,
+          offsetY: 40,
+          customScale: 1.1,
+          donut: {
+            size: '55%',
+          },
+        }
       }
     },
     seriesTaskReviewRate: [26,18],

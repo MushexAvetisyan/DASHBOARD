@@ -5,8 +5,14 @@
       <h2>Insights</h2>
     </div>
     <div class="progress">
-      <div class="progress_content" v-for="(item, index) in taskInfoData" :key="index">
-        <p>{{ item.title }} <img v-if="item.icon" :src="item.icon" alt="icon"></p>
+      <div class="progress_content"
+           v-for="(item, index) in taskInfoData"
+           :key="index">
+        <p>{{ item.title }}
+          <img v-if="item.icon"
+               :src="item.icon"
+               alt="icon">
+        </p>
         <span>{{ item.count }}</span>
       </div>
     </div>

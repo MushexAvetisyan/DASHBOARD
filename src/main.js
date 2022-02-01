@@ -7,8 +7,11 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueApexCharts from 'vue-apexcharts'
 import Vuex from 'vuex'
+import vSelect from 'vue-select'
 
 
+
+Vue.component('v-select', vSelect)
 Vue.use(VueApexCharts)
 Vue.use(Vuex)
 library.add(faUserSecret)
