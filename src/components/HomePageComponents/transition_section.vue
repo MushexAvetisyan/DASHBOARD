@@ -62,7 +62,6 @@ export default {
     font-weight: 600;
     margin-left: 10px;
     border: none;
-    //padding-top: 5px;
     letter-spacing: 2px;
   }
   .btn-color-second{
