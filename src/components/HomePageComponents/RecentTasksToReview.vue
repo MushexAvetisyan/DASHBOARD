@@ -23,7 +23,18 @@
       </div>
     </div>
     <div class="Second_Content">
-
+      <h4>CURRENT STATE</h4>
+      <div class="Percentage_info">
+        <div v-for="(info, index) in TaskInfo"
+             :key="index">
+          <img v-if="info.image" :src="info.image" alt="img">
+          <span v-if="info.percentage">{{info.percentage}}</span>
+          <p>{{info.info.toUpperCase()}}</p>
+          <p class="Tasks">{{info.task}}<span v-if="info.count" class="count">{{info.count}}</span></p>
+          <p class="Completion">{{info.rate}}<span v-if="info.count1" class="count">{{info.count1}}</span></p>
+          <p class="TimeFrame">{{info.Transition}}<span v-if="info.TimeFrameCount" class="count">{{info.TimeFrameCount}}</span></p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +44,7 @@
 <script>
 export default {
   data: () => ({
+
     TaskReview: [
       {
         date: 'OCT 6TH, 2020',
@@ -42,6 +54,25 @@ export default {
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit' +
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+      }
+    ],
+
+    TaskInfo: [
+      {
+        image: require("@/assets/images/complete.svg"),
+        percentage: 79 + '%',
+        info: 'completed',
+        task: 'Tasks',
+        count: 36+'/'+48,
+        rate: 'Completion rate',
+        count1: -8+'%'
+      },
+      {
+        image: require("@/assets/images/Waiting.svg"),
+        percentage: 22,
+        info: 'days to go',
+        Transition: 'Transition timeframe',
+        TimeFrameCount: 56+'days',
       }
     ],
 
@@ -65,7 +96,9 @@ export default {
         icon: require("@/assets/images/High.svg")
       },
     ]
-  })
+  }),
+  methods :{
+  }
 }
 </script>
 
@@ -151,5 +184,87 @@ export default {
   background-color: white;
   margin-left: 30px;
   border-radius: 40px;
+  h4{
+    text-align: left;
+    color: #a3a6b9;
+    font-size: 14px;
+    padding: 25px 0 0 30px;
+  }
+}
+
+.Percentage_info{
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 55px 0;
+  div{
+    border-right: 2px solid #EEEEF1;
+    height: 180px;
+    padding-right: 38px;
+    padding-top: 35px;
+  }
+  div:last-of-type{
+    border: none;
+  }
+  img{
+    width: 50px;
+    height: 50px;
+    margin: -15px 0px;
+  }
+  span{
+    font-size: 55px;
+    color: black;
+    font-weight: 600;
+    margin: 15px;
+    letter-spacing: 2px;
+    font-family: system-ui;
+  }
+  p{
+    color: #A3A6B9;
+    font-weight: 800;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 50px;
+  }
+  .Tasks{
+    color: black;
+    margin-top: 50px;
+    font-weight: 700;
+    margin-left: 0px;
+    float: left;
+    font-size: 12px;
+    .count{
+      font-size: 12px;
+      color: #91939B;
+      margin: 10px;
+    }
+  }
+  .Completion{
+    color: black;
+    margin-top: 50px;
+    font-weight: 700;
+    float: right;
+    margin-left: 25px;
+    margin-right: -30px;
+    font-size: 12px;
+    .count{
+      font-size: 12px;
+      color: #91939B;
+      margin: 10px;
+    }
+  }
+  .TimeFrame{
+    color: black;
+    margin-top: 50px;
+    font-weight: 700;
+    margin-left: 0;
+    margin-right: -40px;
+    font-size: 12px;
+    .count{
+      font-size: 12px;
+      color: #91939B;
+      margin: 10px;
+    }
+  }
 }
 </style>

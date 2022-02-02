@@ -4,6 +4,13 @@
       <div class="chart_transition" style="width: 1047px; height: 380px; background-color: white;">
         <h4>TRANSITION STATE</h4>
         <div class="Transition_Filter">
+          <select class="form_control" v-model="transition_filter">
+            <option class="FilterTr" v-for="n in TransitionTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+          </select>
+          <span></span>
+          <select class="CurrentState" v-model="CurrentState_filter">
+            <option class="FilterTr" v-for="n in StateTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+          </select>
         </div>
         <VueApexCharts
             class="chart_style"
@@ -16,6 +23,9 @@
       <div class="chart_Due_date second_chart" style="width: 580px; height: 380px; background-color: white;">
         <h4>DUE DATE</h4>
         <div class="Due_Dat_Filter">
+          <select class="Due_Date" v-model="DueDate_filter">
+            <option class="FilterTr" v-for="n in DateTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+          </select>
         </div>
         <apexchart
             width="480"
@@ -33,12 +43,23 @@
 import "vue-select/src/scss/vue-select.scss";
 import VueApexCharts from 'vue-apexcharts'
 export default {
-  name: "FirstChartContainer",
+  name: "Transition_DueDate",
   components: {
     VueApexCharts,
 
   },
   data: () => ({
+    TransitionTags: ["All", "New", "latest"],
+    transition_filter: "All",
+
+    StateTags: ["Current State","New","Last",],
+    CurrentState_filter: "Current State",
+
+    DateTags: ["All","New","Last"],
+    DueDate_filter: "All",
+
+
+
     TransitionChartOptions: {
       chart: {
         id: 'vuechart-example',
@@ -175,18 +196,22 @@ export default {
   width: 90px;
   cursor: pointer;
   position: relative;
-  right: 55px;
-  top: -42px;
+  right: 125px;
+  top: -41px;
   margin-top: 0;
 }
 
 .Transition_Filter,{
-  width: 90px;
   cursor: pointer;
   position: relative;
-  right: 250px;
+  right: 285px;
   top: 5px;
   margin-top: 0;
+  span{
+    border-left: 1px solid grey;
+    margin-left: 7px;
+    margin-right: 7px;
+  }
 }
 .select_input{
   ::v-deep{
@@ -244,6 +269,48 @@ export default {
     .apexcharts-legend-marker{
       padding-right: 15px;
     }
+  }
+}
+.form_control{
+  ::v-deep{
+    outline: none;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 3px;
+    text-align: center;
+    &  option{
+
+    }
+  }
+}
+.CurrentState{
+  ::v-deep{
+    outline: none;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 3px;
+    text-align: center;
+  }
+}
+.Due_Date{
+  ::v-deep{
+    outline: none;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 3px;
+    text-align: center;
   }
 }
 </style>

@@ -3,6 +3,13 @@
     <div class="chart_cycle_time">
       <h4>CYCLE TIME</h4>
       <main class="filter_Cyrcle">
+        <select class="CyrcleFormControll" v-model.trim="Cyrcle_Filter">
+          <option class="FilterTr" v-for="n in CyrcleTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+        </select>
+        <span></span>
+        <select class="CyrcleFormState" v-model.trim="Cyrcle_State_Filter">
+          <option class="FilterTr" v-for="n in CyrcleStateTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+        </select>
       </main>
       <section class="Dates">
         <span
@@ -30,6 +37,12 @@
 import VueApexCharts from 'vue-apexcharts'
 export default {
   data: () => ({
+    CyrcleTags: ["All","New","Last"],
+    Cyrcle_Filter: "All",
+
+    CyrcleStateTags: ["Current State","New","Last"],
+    Cyrcle_State_Filter: "Current State",
+
     CycleTimeChartOptions: {
       chart: {
         id: 'Cycle-example',
@@ -134,13 +147,46 @@ export default {
     float: left;
   }
   .filter_Cyrcle{
-    width: 95px;
+    width: 200px;
     cursor: pointer;
     position: relative;
-    right: 575px;
     top: 23px;
     margin-top: 0;
     z-index: 1;
+    float: left;
+    span{
+      border-left: 1px solid grey;
+      margin-left: 7px;
+      margin-right: 7px;
+    }
+  }
+
+  .CyrcleFormControll{
+    ::v-deep{
+      outline: none;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      color: black;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 3px;
+      text-align: center;
+    }
+  }
+
+  .CyrcleFormState{
+    ::v-deep{
+      outline: none;
+      border: none;
+      background-color: white;
+      cursor: pointer;
+      color: black;
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 3px;
+      text-align: center;
+    }
   }
 
   .Dates{

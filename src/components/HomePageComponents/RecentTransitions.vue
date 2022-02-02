@@ -19,12 +19,26 @@
             <span>DAYS TO GO</span>
             <p class="data">{{item.day}}</p>
           </div>
-          <button @click="toggleAccordion" class="open_accordion">
+          <button class="open_accordion">
             <img v-if="item.icon" :src="item.icon" alt="icon">
           </button>
       </div>
       </div>
     </div>
+    <vsa-list class="accordionOne">
+      <vsa-item v-for="(item, index) in Transitions"
+                :key="index">
+        <vsa-heading>
+          <div class="main">
+            <p>as</p>
+          </div>
+        </vsa-heading>
+
+        <vsa-content>
+          <p>asdasd</p>
+        </vsa-content>
+      </vsa-item>
+    </vsa-list>
   </div>
 </template>
 
@@ -32,11 +46,28 @@
 
 <script>
 
+import {
+  VsaList,
+  VsaItem,
+  VsaHeading,
+  VsaContent,
+  VsaIcon
+} from 'vue-simple-accordion';
+import 'vue-simple-accordion/dist/vue-simple-accordion.css';
+
 export default {
   name: "RecentTransitions",
-
+  components: {
+    VsaList,
+    VsaItem,
+    VsaHeading,
+    VsaContent,
+    VsaIcon
+  },
   data: () => ({
+
     isOpen: true,
+
     Transitions: [
       {
         title: "UI/UX Designer",
@@ -73,6 +104,11 @@ export default {
 
 
 <style scoped lang="scss">
+.accordionOne{
+  ::v-deep{
+   margin: 0 auto;
+  }
+}
 .Recent_container{
   height: 420px;
   width: 80%;
