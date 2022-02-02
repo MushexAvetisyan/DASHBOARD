@@ -25,20 +25,24 @@
       </div>
       </div>
     </div>
-    <vsa-list class="accordionOne">
-      <vsa-item v-for="(item, index) in Transitions"
-                :key="index">
-        <vsa-heading>
-          <div class="main">
-            <p>as</p>
-          </div>
-        </vsa-heading>
 
-        <vsa-content>
-          <p>asdasd</p>
-        </vsa-content>
-      </vsa-item>
-    </vsa-list>
+<!--    <div>-->
+<!--      <vsa-list class="accordionOne">-->
+<!--        <vsa-item v-for="(item, index) in Transitions"-->
+<!--                  :key="index">-->
+<!--          <vsa-heading>-->
+<!--            <div class="main">-->
+<!--              <p>as</p>-->
+<!--            </div>-->
+<!--          </vsa-heading>-->
+
+<!--          <vsa-content>-->
+<!--            <p>asdasd</p>-->
+<!--          </vsa-content>-->
+<!--        </vsa-item>-->
+<!--      </vsa-list>-->
+<!--    </div>-->
+
   </div>
 </template>
 
@@ -104,6 +108,7 @@ export default {
 
 
 <style scoped lang="scss">
+
 .accordionOne{
   ::v-deep{
    margin: 0 auto;
