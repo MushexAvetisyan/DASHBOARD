@@ -79,6 +79,9 @@ export default {
           }
         }
       },
+      fill: {
+        opacity: 1
+      },
       yaxis: {
         max: 30,
         min: 0,

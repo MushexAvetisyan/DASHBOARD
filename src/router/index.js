@@ -24,6 +24,21 @@ const routes = [
     path: '/Profile',
     name: 'Profile',
     component: () => import('../views/Profile.vue')
+  },
+  {
+    path: '/MyTransitions',
+    name: 'Transitions',
+    component: () => import('../views/MyTransitions.vue')
+  },
+  {
+    path: '/NewTask',
+    name: 'CreateNewTask',
+    component: () => import('../views/AddNewTask.vue')
+  },
+  {
+    path: '/AddNewTransition',
+    name: 'NewTransition',
+    component: () => import('../views/AddingNewTransition.vue')
   }
 ]
 

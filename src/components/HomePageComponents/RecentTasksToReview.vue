@@ -35,6 +35,7 @@
           <p class="TimeFrame">{{info.Transition}}<span v-if="info.TimeFrameCount" class="count">{{info.TimeFrameCount}}</span></p>
         </div>
       </div>
+      <VueApexCharts type="bar" width="550" height="80" :options="CurrentChartOption" :series="CurrentChartSerries"></VueApexCharts>
     </div>
   </div>
 </template>
@@ -42,7 +43,11 @@
 
 
 <script>
+import VueApexCharts from "vue-apexcharts";
 export default {
+  components: {
+    VueApexCharts
+  },
   data: () => ({
 
     TaskReview: [
@@ -95,7 +100,96 @@ export default {
         label: 'High criticality',
         icon: require("@/assets/images/High.svg")
       },
-    ]
+    ],
+
+    CurrentChartOption: {
+      chart: {
+        id: "CurrentChart",
+        stacked: true,
+        animation: {
+          speed: 900
+        },
+        toolbar: {
+          show: false
+        },
+      },
+
+      colors: ["#43BCCD", "#6D32A5", "#F53361",],
+
+      fill: {
+        opacity: 1
+      },
+
+      dataLabels: {
+        enabled: false
+      },
+
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          borderRadius: 5,
+          columnWidth: '50%',
+        },
+      },
+
+
+      legend: {
+        position: "bottom",
+        offsetY: 7,
+        offsetX: -41,
+        fontSize: '12px',
+        fontWeight: 700,
+        labels: {
+          colors: ['#000000']
+        },
+        itemMargin: {
+          horizontal: 35
+        },
+        markers: {
+          width: 15,
+          height: 15,
+          offsetY: 0,
+          offsetX: -20,
+          radius: 20
+        }
+      },
+
+      yaxis: {
+        show: false
+      },
+      xaxis: {
+        min: 0,
+        max: 100,
+        labels: {
+          show: false
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
+        },
+      },
+      grid: {
+        show: false
+      }
+    },
+
+    CurrentChartSerries: [
+      {
+        name: "Current state",
+        data: [70],
+      },
+      {
+        name: "Agreed timing",
+        data: [15],
+      },
+      {
+        name: "Agreed timing",
+        data: [15],
+      },
+    ],
+
   }),
   methods :{
   }
@@ -184,6 +278,7 @@ export default {
   background-color: white;
   margin-left: 30px;
   border-radius: 40px;
+  padding: 0 45px 0 0;
   h4{
     text-align: left;
     color: #a3a6b9;
@@ -196,7 +291,7 @@ export default {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding: 55px 0;
+  padding: 20px 0;
   div{
     border-right: 2px solid #EEEEF1;
     height: 180px;

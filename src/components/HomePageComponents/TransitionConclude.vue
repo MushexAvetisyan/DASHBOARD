@@ -9,10 +9,15 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi harum labore natus voluptate?</p>
       </div>
       <div class="add_or_conclude">
-        <button class="btn-task">ADD OTHER TASKS</button>
-        <button class="btn-task btn-color-second">CONCLUDE TRANSITION</button>
+        <router-link to="/NewTask">
+          <button class="btn-task">ADD OTHER TASKS</button>
+        </router-link>
+        <router-link to="/MyTransitions">
+          <button class="btn-task btn-color-second">CONCLUDE TRANSITION</button>
+        </router-link>
       </div>
     </div>
+    <router-view />
   </div>
 </template>
 

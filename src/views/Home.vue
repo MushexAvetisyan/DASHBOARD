@@ -8,6 +8,7 @@
     <CompletionReviewRate />
     <RecentTransitions />
     <RecentTasksToReview />
+    <TasksApprovalRate />
     <router-view />
   </div>
 </template>
@@ -23,6 +24,7 @@ import ChartCyrcleTime from "../components/HomePageComponents/ChartCyrcleTime";
 import RecentTransitions from "../components/HomePageComponents/RecentTransitions";
 import RecentTasksToReview  from "../components/HomePageComponents/RecentTasksToReview";
 import CompletionReviewRate from "@/components/HomePageComponents/Completion&ReviewRate";
+import TasksApprovalRate from "@/components/HomePageComponents/TasksApprovalRate";
 
 export default {
   name: 'Home',
@@ -34,7 +36,8 @@ export default {
     ChartCyrcleTime,
     RecentTransitions,
     RecentTasksToReview,
-    CompletionReviewRate
+    CompletionReviewRate,
+    TasksApprovalRate
   },
 
   data: () => ({

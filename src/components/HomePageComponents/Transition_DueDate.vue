@@ -81,6 +81,9 @@ export default {
       xaxis: {
         categories: ['TASKS', 'KNOWLEDGE TRANSFER', 'PRODUCTION PARALLEL', 'LIVE EXECUTION', 'COMPLETED'],
       },
+      fill: {
+        opacity: 1
+      },
       yaxis: {
         max: 6,
         min: 0,
@@ -104,7 +107,9 @@ export default {
       },
       labels: ['Completed due date (3)', 'Nearing due date (2)'],
 
-
+      fill: {
+        opacity: 1
+      },
       colors: ['#43BCCD', '#6D32A5'],
 
       dataLabels: {
@@ -124,7 +129,7 @@ export default {
           width: 15,
           height: 15,
           offsetY: 2,
-          offsetX: -5
+          offsetX: -5,
         }
       },
       plotOptions: {

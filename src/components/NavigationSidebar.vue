@@ -48,7 +48,13 @@
               </router-link>
             </ul>
           </nav>
+          <div class="NewTransition">
+            <router-link to="/AddingNewTransition">
+              <button></button>
+            </router-link>
+          </div>
         </div>
+
       </header>
       <div class="account_notify">
         <div class="main_notification">
@@ -166,7 +172,7 @@ $white-off: #DFDBD9;
   ul{
     li{
       margin: 75px 0 75px 25px;
-      padding: 35px 120px 35px 15px;
+      padding: 25px 120px 25px 15px;
       display: flex;
       align-items: center;
     }
@@ -190,7 +196,7 @@ $white-off: #DFDBD9;
       a{
       border: none !important;
       filter: none !important;
-    }
+      }
     }
     .profile_img{
       width: 66px;
@@ -199,7 +205,23 @@ $white-off: #DFDBD9;
     }
   }
 
-
+  .NewTransition{
+    position: relative;
+    top: 110px;
+    button{
+      width: 55px;
+      height: 55px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-radius: 50%;
+      background-image: url("../assets/images/NewTransation.svg");
+    }
+    a{
+      border: none !important;
+      filter: none !important;
+    }
+  }
 // HOVER SLIDE EFFECT
 .list-hover-slide{
 li{

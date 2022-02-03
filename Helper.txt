@@ -24,5 +24,5 @@
 
 
 
-GIT TOKEN KEY -------- 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
+GIT TOKEN KEY -------- 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
 

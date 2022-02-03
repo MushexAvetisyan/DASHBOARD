@@ -6,7 +6,7 @@
         <h4>TASKS REVIEW RATE</h4>
         <div class="Review_Filter">
           <select class="Review_control" v-model="ReviewFilter">
-            <option class="FilterTr" v-for="n in ReviewTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+            <option v-for="n in ReviewTags" v-bind:key="n" v-bind:value="n">{{ n }}</option>
           </select>
         </div>
         <apexchart width="430" height="380" type="donut" :options="TaskReviewRateOptions" :series="seriesTaskReviewRate"></apexchart>
@@ -15,8 +15,8 @@
       <div class="completion_rate" style="width: 1047px; height: 380px; background-color: white;">
                 <h4>COMPLETION RATE</h4>
         <div class="completion_Filter">
-          <select class="Completion_control" v-model="Completion_Filter">
-            <option v-for="n in CompletionTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+          <select class="Completion_control" v-model="CompletionTags">
+            <option v-for="n in Completion_Filter" v-bind:key="n" v-bind:value="n">{{ n}}</option>
           </select>
         </div>
         <apexchart width="950" height="330" type="bar" :options="CompletionRateChartOptions" :series="seriesForCompletionRate"></apexchart>
@@ -42,7 +42,7 @@ export default {
         id: 'vuechart-example',
       },
       xaxis: {
-        categories: ['TASKS', 'knowledge transfer', 'production parallel', 'live execution'],
+        categories: ['TASKS', 'KNOWLEDGE TRANSFER', 'PRODUCTION PARALLEL', 'LIVE EXECUTION'],
       },
 
       yaxis: {
@@ -51,7 +51,11 @@ export default {
         tickAmount: 3,
 
       },
-      colors: ['#43BCCD', '#6D32A5', '#F53361',],
+
+      fill: {
+        opacity: 1
+      },
+      colors: ["#43BCCD","#6D32A5","#F53361","#000000"], /*, "#6D32A5", "#F53361", "#000000"],*/
 
       dataLabels: {
         enabled: false
@@ -83,7 +87,7 @@ export default {
       },
       plotOptions:{
         bar:{
-          distributed: true,
+          distributed: false,
           borderRadius: 10,
           columnWidth: '40%',
         }
@@ -93,15 +97,15 @@ export default {
     seriesForCompletionRate: [
       {
         name: 'Completed on time',
-        data: [5, 4, 4, 1],
+        data: [5, 4, 3, 1],
       },
       {
         name: 'Completed over due date',
-        data: [1.80,2.80,4, 0.30],
+        data: [1.80,2.80,2, 0.30],
       },
       {
         name: 'Not completed',
-        data: [0.5,0.3, 4, 5.20]
+        data: [0.5,0.3, 4.30, 5.20]
       },
     ],
 
@@ -146,7 +150,10 @@ export default {
     },
 
     seriesTaskReviewRate: [26,18],
-  })
+  }),
+  methods: {
+
+  }
 }
 </script>
 
