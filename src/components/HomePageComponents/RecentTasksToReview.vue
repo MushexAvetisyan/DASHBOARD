@@ -2,9 +2,18 @@
   <div class="app">
     <div class="main_content">
       <h4>Recent tasks to review</h4>
+
       <div class="ShortTask"
            v-for="(task, index) in TaskReview"
            :key="index">
+        <div class="mush">
+          <p>UI/UX DESIGNER</p>
+          <div>
+            <button class="watchTask"><img src="@/assets/images/upload.svg" alt=""></button>
+            <button class="watchTask"><img src="@/assets/images/eye.svg" alt=""></button>
+          </div>
+          <p>Integrated with Jira</p>
+        </div>
         <h4 class="Task_Date">{{task.date}}</h4>
         <h4 class="Task_Title">{{task.title}}</h4>
         <h4 class="Task_Project">{{task.Project}}</h4>
@@ -223,6 +232,37 @@ export default {
   box-shadow: 0 0 7px 6px #f0f0f0;
   margin: 5% auto;
   border-radius: 40px;
+  .mush{
+    float: right;
+    width: 140px;
+    height: 175px;
+    position: relative;
+    right: 20px;
+    top: 30px;
+    p{
+      color: black;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    p:last-of-type{
+      font-size: 10px;
+      color: black;
+      font-weight: 600;
+      margin-top: 50px;
+    }
+    div{
+      margin-top: 30px;
+      img{
+        margin: 0 5px 0 5px;
+      }
+    }
+    .watchTask{
+      cursor: pointer;
+      background-color: white;
+      outline: none;
+      border: none;
+    }
+  }
   .Task_Date{
     color: #51C1D1;
     font-size: 12px;
@@ -233,16 +273,17 @@ export default {
     font-size: 25px;
   }
   .text_task{
-    width: 100%;
+    width: 74%;
     height: 70px;
     overflow-y: auto;
+    margin: 0 25px;
   }
   .Task_Project{
     color: #51C1D1;
     padding: 10px 25px 0;
   }
   .Task{
-    padding: 0 25px;
+    padding: 0 0;
     font-size: 11px;
     line-height: 22px;
   }

@@ -8,11 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueApexCharts from 'vue-apexcharts'
 import Vuex from 'vuex'
 import vSelect from 'vue-select'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
 
 
-Vue.use(Vuetify)
 Vue.component('v-select', vSelect)
 Vue.use(VueApexCharts)
 Vue.use(Vuex)

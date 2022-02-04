@@ -25,24 +25,6 @@
       </div>
       </div>
     </div>
-
-<!--    <div>-->
-<!--      <vsa-list class="accordionOne">-->
-<!--        <vsa-item v-for="(item, index) in Transitions"-->
-<!--                  :key="index">-->
-<!--          <vsa-heading>-->
-<!--            <div class="main">-->
-<!--              <p>as</p>-->
-<!--            </div>-->
-<!--          </vsa-heading>-->
-
-<!--          <vsa-content>-->
-<!--            <p>asdasd</p>-->
-<!--          </vsa-content>-->
-<!--        </vsa-item>-->
-<!--      </vsa-list>-->
-<!--    </div>-->
-
   </div>
 </template>
 
@@ -134,9 +116,17 @@ export default {
   margin: 25px 0 0 25px;
   box-shadow: 0 0 8px 12px #f0f0f0;
   border-radius: 25px;
-  border-left: 25px solid #F53361;
   display: flex;
   align-items: center;
+  &:first-of-type{
+    border-left: 25px solid #F53361;
+  }
+  &:nth-of-type(2){
+    border-left: 25px solid #6D32A5;
+  }
+  &:nth-of-type(3){
+    border-left: 25px solid #43BCCD;
+  }
 
   h2{
     font-weight: bold;

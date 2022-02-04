@@ -112,6 +112,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.app{
+  padding-bottom: 150px;
+}
 .Approval_rate{
   width: 580px;
   height: 380px;
