@@ -30,5 +30,8 @@ export default {
     url("./fonts/CircularFontFamily/Gilroy-Regular.ttf");
   }
 }
+p{
+  margin-bottom: 0;
+}
 
 </style>

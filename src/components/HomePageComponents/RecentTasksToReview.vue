@@ -228,9 +228,9 @@ export default {
 .ShortTask{
   background-color: white;
   width: 95%;
-  height: 220px;
+  //height: 220px;
   box-shadow: 0 0 7px 6px #f0f0f0;
-  margin: 5% auto;
+  margin: 3% auto;
   border-radius: 40px;
   .mush{
     float: right;
@@ -291,6 +291,7 @@ export default {
 .CommentSection{
   display: flex;
   margin-top: 10px;
+  padding-bottom: 15px;
   .Main_comment_content{
     display: flex;
     align-items: center;

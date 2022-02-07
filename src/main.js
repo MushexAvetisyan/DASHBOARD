@@ -8,8 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueApexCharts from 'vue-apexcharts'
 import Vuex from 'vuex'
 import vSelect from 'vue-select'
+import Antd from 'ant-design-vue';
+// import 'ant-design-vue/dist/antd.css';
 
 
+
+Vue.use(Antd);
 Vue.component('v-select', vSelect)
 Vue.use(VueApexCharts)
 Vue.use(Vuex)
