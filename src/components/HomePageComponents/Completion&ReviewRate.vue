@@ -1,27 +1,51 @@
 <template>
   <div class="app">
     <div class="second_chart_container">
-
-      <div class="TaskReviewRate" style="width: 580px; height: 380px; background-color: white;">
+      <div
+        class="TaskReviewRate"
+        style="width: 580px; height: 380px; background-color: white"
+      >
         <h4>TASKS REVIEW RATE</h4>
         <div class="Review_Filter">
           <select class="Review_control" v-model="ReviewFilter">
-            <option v-for="n in ReviewTags" v-bind:key="n" v-bind:value="n">{{ n }}</option>
+            <option v-for="n in ReviewTags" v-bind:key="n" v-bind:value="n">
+              {{ n }}
+            </option>
           </select>
         </div>
-        <apexchart width="430" height="380" type="donut" :options="TaskReviewRateOptions" :series="seriesTaskReviewRate"></apexchart>
+        <apexchart
+          width="430"
+          height="380"
+          type="donut"
+          :options="TaskReviewRateOptions"
+          :series="seriesTaskReviewRate"
+        ></apexchart>
       </div>
 
-      <div class="completion_rate" style="width: 1047px; height: 380px; background-color: white;">
-                <h4>COMPLETION RATE</h4>
+      <div
+        class="completion_rate"
+        style="width: 1047px; height: 380px; background-color: white"
+      >
+        <h4>COMPLETION RATE</h4>
         <div class="completion_Filter">
           <select class="Completion_control" v-model="CompletionTags">
-            <option v-for="n in Completion_Filter" v-bind:key="n" v-bind:value="n">{{ n}}</option>
+            <option
+              v-for="n in Completion_Filter"
+              v-bind:key="n"
+              v-bind:value="n"
+            >
+              {{ n }}
+            </option>
           </select>
         </div>
-        <apexchart width="950" height="330" type="bar" :options="CompletionRateChartOptions" :series="seriesForCompletionRate"></apexchart>
+        <apexchart
+          width="950"
+          height="330"
+          type="bar"
+          :options="CompletionRateChartOptions"
+          :series="seriesForCompletionRate"
+        ></apexchart>
       </div>
-
     </div>
   </div>
 </template>
@@ -29,7 +53,7 @@
 <script>
 export default {
   data: () => ({
-    name: 'Completion&ReviewRate.vue',
+    name: "Completion&ReviewRate.vue",
 
     ReviewTags: ["All phases", "New", "Latest"],
     ReviewFilter: "All phases",
@@ -39,34 +63,41 @@ export default {
 
     CompletionRateChartOptions: {
       chart: {
-        id: 'vuechart-example',
+        id: "vuechart-example",
+        toolbar: {
+          show: false,
+        },
       },
       xaxis: {
-        categories: ['TASKS', 'KNOWLEDGE TRANSFER', 'PRODUCTION PARALLEL', 'LIVE EXECUTION'],
+        categories: [
+          "TASKS",
+          "KNOWLEDGE TRANSFER",
+          "PRODUCTION PARALLEL",
+          "LIVE EXECUTION",
+        ],
       },
 
       yaxis: {
         max: 6,
         min: 0,
         tickAmount: 3,
-
       },
 
       fill: {
-        opacity: 1
+        opacity: 1,
       },
-      colors: ["#43BCCD","#6D32A5","#F53361","#000000"], /*, "#6D32A5", "#F53361", "#000000"],*/
+      colors: ["#43BCCD", "#6D32A5", "#F53361", "#000000"],
 
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       legend: {
-        position: 'top',
+        position: "top",
         show: true,
-        horizontalAlign: 'right',
+        horizontalAlign: "right",
         width: 900,
         height: 50,
-        fontSize: '14',
+        fontSize: "14",
         offsetY: -3,
         fontFamily: "CircularFontFamily",
         fontWeight: 900,
@@ -83,38 +114,38 @@ export default {
       },
       stroke: {
         width: 8,
-        colors:  ['color']
+        colors: ["color"],
       },
-      plotOptions:{
-        bar:{
+      plotOptions: {
+        bar: {
           distributed: false,
           borderRadius: 10,
-          columnWidth: '40%',
-        }
+          columnWidth: "40%",
+        },
       },
     },
 
     seriesForCompletionRate: [
       {
-        name: 'Completed on time',
+        name: "Completed on time",
         data: [5, 4, 3, 1],
       },
       {
-        name: 'Completed over due date',
-        data: [1.80,2.80,2, 0.30],
+        name: "Completed over due date",
+        data: [1.8, 2.8, 2, 0.3],
       },
       {
-        name: 'Not completed',
-        data: [0.5,0.3, 4.30, 5.20]
+        name: "Not completed",
+        data: [0.5, 0.3, 4.3, 5.2],
       },
     ],
 
     TaskReviewRateOptions: {
       chart: {
-        id: 'TaskReviewRate',
+        id: "TaskReviewRate",
       },
-      labels: ['Reviewed tasks (26)', 'Not reviewed tasks (18)'],
-      colors: ['#43BCCD', '#6D32A5'],
+      labels: ["Reviewed tasks (26)", "Not reviewed tasks (18)"],
+      colors: ["#43BCCD", "#6D32A5"],
 
       dataLabels: {
         enabled: false,
@@ -122,19 +153,19 @@ export default {
       legend: {
         show: true,
         position: "left",
-        fontSize: '12px',
+        fontSize: "12px",
         fontWeight: 600,
         offsetX: -20,
         offsetY: 30,
         itemMargin: {
-          vertical: 20
+          vertical: 20,
         },
         markers: {
           width: 15,
           height: 15,
           offsetY: 2,
-          offsetX: -10
-        }
+          offsetX: -10,
+        },
       },
       plotOptions: {
         pie: {
@@ -143,31 +174,29 @@ export default {
           offsetY: 40,
           customScale: 1.1,
           donut: {
-            size: '55%',
+            size: "55%",
           },
-        }
-      }
+        },
+      },
     },
 
-    seriesTaskReviewRate: [26,18],
+    seriesTaskReviewRate: [26, 18],
   }),
-  methods: {
-
-  }
-}
+  methods: {},
+};
 </script>
 
 <style scoped lang="scss">
-.second_chart_container{
+.second_chart_container {
   display: flex;
   width: 80%;
-  div{
+  div {
     border-radius: 40px;
     margin-top: 15px;
   }
-  .completion_rate{
+  .completion_rate {
     margin-left: 30px;
-    h4{
+    h4 {
       text-align: left;
       color: #a3a6b9;
       font-size: 14px;
@@ -175,8 +204,8 @@ export default {
       float: left;
     }
   }
-  .TaskReviewRate{
-    h4{
+  .TaskReviewRate {
+    h4 {
       text-align: left;
       color: #a3a6b9;
       font-size: 14px;
@@ -184,22 +213,22 @@ export default {
       float: left;
     }
   }
-  .Review_Filter{
+  .Review_Filter {
     cursor: pointer;
     position: relative;
     right: 120px;
     top: 22px;
     margin-top: 0;
   }
-  .completion_Filter{
+  .completion_Filter {
     cursor: pointer;
     position: relative;
     right: 345px;
     top: 22px;
     margin-top: 0;
   }
-  .Review_control{
-    ::v-deep{
+  .Review_control {
+    ::v-deep {
       outline: none;
       border: none;
       background-color: white;
@@ -211,8 +240,8 @@ export default {
       text-align: center;
     }
   }
-  .Completion_control{
-    ::v-deep{
+  .Completion_control {
+    ::v-deep {
       outline: none;
       border: none;
       background-color: white;

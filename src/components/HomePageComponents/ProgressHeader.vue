@@ -5,13 +5,14 @@
       <h2>Insights</h2>
     </div>
     <div class="progress">
-      <div class="progress_content"
-           v-for="(item, index) in taskInfoData"
-           :key="index">
-        <p>{{ item.title }}
-          <img v-if="item.icon"
-               :src="item.icon"
-               alt="icon">
+      <div
+        v-for="(item, index) in taskInfoData"
+        :key="index"
+        class="progress_content"
+      >
+        <p>
+          {{ item.title }}
+          <img v-if="item.icon" :src="item.icon" alt="icon" />
         </p>
         <span>{{ item.count }}</span>
       </div>
@@ -42,58 +43,63 @@ export default {
         title: "COMPLETED",
         count: 2,
         icon: require("@/assets/images/circle-info.svg"),
-      }
-
+      },
     ],
-  })
-}
+  }),
+};
 </script>
 
 <style lang="scss">
-.contain_header{
+.contain_header {
   display: flex;
   align-items: center;
   width: 100%;
   padding-top: 1%;
-  .progress{
+
+  .progress {
     display: flex;
-    div{
+
+    div {
       margin-left: 80px;
     }
   }
 }
 
-.dashboard_Header{
-  p{
+.dashboard_Header {
+  p {
     text-align: left;
     font: normal normal medium 15px/50px;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0;
-    color: #6D32A5;
+    color: #6d32a5;
     text-transform: uppercase;
     opacity: 1;
   }
-  h2{
+
+  h2 {
     font-size: 50px;
     font-weight: 900;
     color: black;
   }
 }
 
-.progress_content{
+.progress_content {
   text-align: left;
-  p{
+
+  p {
     color: #a3a6b9;
     font-weight: 600;
     font-size: 15px;
   }
-  span{
+
+  span {
     color: black;
     font-size: 23px;
     font-weight: 700;
   }
-  img{
+
+  img {
     position: relative;
     top: 1px;
     left: 5px;

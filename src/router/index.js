@@ -1,51 +1,51 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/Refresh',
-    name: 'Refresh',
-    component: () => import('../views/Refresh.vue')
+    path: "/Refresh",
+    name: "Refresh",
+    component: () => import("../views/Refresh.vue"),
   },
   {
-    path: '/Help',
-    name: 'Help',
-    component: () => import('../views/Help.vue'),
+    path: "/Help",
+    name: "Help",
+    component: () => import("../views/Help.vue"),
   },
   {
-    path: '/Profile',
-    name: 'Profile',
-    component: () => import('../views/Profile.vue')
+    path: "/Profile",
+    name: "Profile",
+    component: () => import("../views/Profile.vue"),
   },
   {
-    path: '/MyTransitions',
-    name: 'Transitions',
-    component: () => import('../views/MyTransitions.vue')
+    path: "/MyTransitions",
+    name: "Transitions",
+    component: () => import("../views/MyTransitions.vue"),
   },
   {
-    path: '/NewTask',
-    name: 'CreateNewTask',
-    component: () => import('../views/AddNewTask.vue')
+    path: "/NewTask",
+    name: "CreateNewTask",
+    component: () => import("../views/AddNewTask.vue"),
   },
   {
-    path: '/AddNewTransition',
-    name: 'NewTransition',
-    component: () => import('../views/AddingNewTransition.vue')
-  }
-]
+    path: "/AddNewTransition",
+    name: "NewTransition",
+    component: () => import("../views/AddingNewTransition.vue"),
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

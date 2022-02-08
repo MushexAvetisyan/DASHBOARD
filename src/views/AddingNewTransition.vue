@@ -1,17 +1,11 @@
 <template>
-  <div class="app">
-    Add New Transition
-  </div>
+  <div class="app">Add New Transition</div>
 </template>
 
 <script>
 export default {
-  data: () => ({
-
-  })
-}
+  data: () => ({}),
+};
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

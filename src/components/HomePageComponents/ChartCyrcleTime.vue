@@ -4,152 +4,159 @@
       <h4>CYCLE TIME</h4>
       <main class="filter_Cyrcle">
         <select class="CyrcleFormControll" v-model.trim="Cyrcle_Filter">
-          <option class="FilterTr" v-for="n in CyrcleTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+          <option
+            class="FilterTr"
+            v-for="n in CyrcleTags"
+            v-bind:key="n"
+            v-bind:value="n"
+          >
+            {{ n.trim() }}
+          </option>
         </select>
         <span></span>
         <select class="CyrcleFormState" v-model.trim="Cyrcle_State_Filter">
-          <option class="FilterTr" v-for="n in CyrcleStateTags" v-bind:key="n" v-bind:value="n">{{ n.trim()}}</option>
+          <option
+            class="FilterTr"
+            v-for="n in CyrcleStateTags"
+            v-bind:key="n"
+            v-bind:value="n"
+          >
+            {{ n.trim() }}
+          </option>
         </select>
       </main>
       <section class="Dates">
-        <span
-            v-for="(item, index) in DatesInfo"
-            :key="index">
+        <span v-for="(item, index) in DatesInfo" :key="index">
           {{ item.name.toUpperCase() }}
-          <p>{{item.day}}</p>
+          <p>{{ item.day }}</p>
         </span>
       </section>
       <VueApexCharts
-          class="chart_style"
-          width="1450"
-          height="310"
-          type="line"
-          :options="CycleTimeChartOptions"
-          :series="seriesForCycleTime">
+        class="chart_style"
+        width="1450"
+        height="310"
+        type="line"
+        :options="CycleTimeChartOptions"
+        :series="seriesForCycleTime"
+      >
       </VueApexCharts>
     </div>
   </div>
 </template>
 
-
-
 <script>
-import VueApexCharts from 'vue-apexcharts'
+import VueApexCharts from "vue-apexcharts";
 export default {
   data: () => ({
-    CyrcleTags: ["All","New","Last"],
+    CyrcleTags: ["All", "New", "Last"],
     Cyrcle_Filter: "All",
 
-    CyrcleStateTags: ["Current State","New","Last"],
+    CyrcleStateTags: ["Current State", "New", "Last"],
     Cyrcle_State_Filter: "Current State",
 
     CycleTimeChartOptions: {
       chart: {
-        id: 'Cycle-example',
+        id: "Cycle-example",
         toolbar: {
-          show: false
-        }
+          show: false,
+        },
       },
       legend: {
         show: true,
-        showForSingleSeries: true,
-        showForNullSeries: true,
-        showForZeroSeries: true,
         position: 'top',
-        labels: ['Average Cycle time', 'Agreed TAT', ],
+        fontSize: "15px",
       },
-      colors: ['#43BCCD', '#6D32A5'],
+      colors: ["#43BCCD", "#6D32A5"],
       dataLabels: {
         enabled: true,
         background: {
           enabled: true,
           borderRadius: 50,
-          foreColor: '#fff',
+          foreColor: "#fff",
           padding: 5,
-        }
+        },
       },
-      xaxis:{
-        categories: ['TASKS APPROVING','KNOWLEDGE TRANSFER', 'PRODUCTION PARALLEL', 'LIVE EXECUTION', ],
-        tickPlacement: 'between',
+      xaxis: {
+        categories: [
+          "TASKS APPROVING",
+          "KNOWLEDGE TRANSFER",
+          "PRODUCTION PARALLEL",
+          "LIVE EXECUTION",
+        ],
+        tickPlacement: "between",
         labels: {
           style: {
-            colors: ['#A3A6B9','#A3A6B9','#A3A6B9','#A3A6B9','#A3A6B9',],
-            fontSize: '10px',
-            fontWeight: 600
-          }
-        }
+            colors: ["#A3A6B9", "#A3A6B9", "#A3A6B9", "#A3A6B9", "#A3A6B9"],
+            fontSize: "10px",
+            fontWeight: 600,
+          },
+        },
       },
       fill: {
-        opacity: 1
+        opacity: 1,
       },
       yaxis: {
         max: 30,
         min: 0,
-        tickAmount: 3
+        tickAmount: 3,
       },
     },
     seriesForCycleTime: [
       {
-        name: 'Average Cycle time',
-        data: [12, 5, 14, 17]
+        name: "Average Cycle time",
+        data: [12, 5, 14, 17],
       },
       {
-        name: 'Agreed TAT',
-        data: [9, 9, 18, 10]
-      }
+        name: "Agreed TAT",
+        data: [9, 9, 18, 10],
+      },
     ],
-    books: [
-      { title: "All" },
-      { title: "Last" },
-      { title: "New" },
-    ],
+    books: [{ title: "All" }, { title: "Last" }, { title: "New" }],
 
     DatesInfo: [
       {
-        name: 'tasks approving',
-        day: '12 days (avg.)'
+        name: "tasks approving",
+        day: "12 days (avg.)",
       },
       {
-        name: 'knowledge',
-        day: '4 days (avg.)'
-      },{
-        name: 'production',
-        day: '13 days (avg.)'
+        name: "knowledge",
+        day: "4 days (avg.)",
       },
       {
-        name: 'live',
-        day: '8 days (avg.)'
+        name: "production",
+        day: "13 days (avg.)",
       },
       {
-        name: 'total',
-        day: '37 days (avg.)'
-      }
-    ]
+        name: "live",
+        day: "8 days (avg.)",
+      },
+      {
+        name: "total",
+        day: "37 days (avg.)",
+      },
+    ],
   }),
   components: {
-    VueApexCharts
-  }
-}
+    VueApexCharts,
+  },
+};
 </script>
 
-
-
-
 <style scoped lang="scss">
-.chart_cycle_time{
+.chart_cycle_time {
   height: 380px;
   width: 80%;
   background-color: white;
   border-radius: 30px;
   margin-top: 25px;
-  h4{
+  h4 {
     text-align: left;
     color: #a3a6b9;
     font-size: 14px;
     padding: 27px 0 0 25px;
     float: left;
   }
-  .filter_Cyrcle{
+  .filter_Cyrcle {
     width: 200px;
     cursor: pointer;
     position: relative;
@@ -157,15 +164,15 @@ export default {
     margin-top: 0;
     z-index: 1;
     float: left;
-    span{
+    span {
       border-left: 1px solid grey;
       margin-left: 7px;
       margin-right: 7px;
     }
   }
 
-  .CyrcleFormControll{
-    ::v-deep{
+  .CyrcleFormControll {
+    ::v-deep {
       outline: none;
       border: none;
       background-color: white;
@@ -178,8 +185,8 @@ export default {
     }
   }
 
-  .CyrcleFormState{
-    ::v-deep{
+  .CyrcleFormState {
+    ::v-deep {
       outline: none;
       border: none;
       background-color: white;
@@ -192,64 +199,63 @@ export default {
     }
   }
 
-  .Dates{
+  .Dates {
     display: flex;
-    align-items: baseline;
-    width: 60%;
-    margin: 0 37%;
+    width: 55%;
+    margin: 0 45%;
     padding: 0;
     text-align: left;
-    span{
+    span {
       margin-top: 25px;
-      color: #AEB1C2;
+      color: #aeb1c2;
       font-weight: 700;
       font-size: 12px;
     }
-    p{
+    p {
       color: black;
       font-weight: 800;
     }
   }
 
-  .chart_style{
+  .chart_style {
     ::v-deep {
-      .apexcharts-yaxis-texts-g{
-        color: #A3A6B9;
+      .apexcharts-yaxis-texts-g {
+        color: #a3a6b9;
       }
-      .apexcharts-ycrosshairs{
-        color: #A3A6B9;
+      .apexcharts-ycrosshairs {
+        color: #a3a6b9;
       }
-      .apexcharts-legend{
+      .apexcharts-legend {
         display: none;
       }
-      .apexcharts-legend-marker{
+      .apexcharts-legend-marker {
         padding-right: 15px;
       }
     }
   }
-  .select_input{
-    ::v-deep{
-      .vs__dropdown-toggle{
+  .select_input {
+    ::v-deep {
+      .vs__dropdown-toggle {
         cursor: pointer;
         border: none;
         padding: 0;
         display: flex;
         align-items: baseline;
       }
-      .vs__actions{
+      .vs__actions {
         padding: 0 30px 0 3px;
         display: block;
-        svg{
+        svg {
           fill: black;
         }
       }
-      .vs__dropdown-menu{
+      .vs__dropdown-menu {
         min-width: 75px;
       }
-      .vs__clear{
+      .vs__clear {
         display: none;
       }
-      .vs__search{
+      .vs__search {
         //display: none;
         width: 65%;
         margin: -2px 0 0 0;
@@ -257,18 +263,17 @@ export default {
         color: black;
         font-weight: 800;
       }
-      .vs__selected{
+      .vs__selected {
         margin: 0;
         color: black;
         font-weight: 800;
         width: 45px;
       }
-      .vs__selected-options{
+      .vs__selected-options {
         flex-wrap: nowrap;
         align-items: center;
       }
     }
   }
-
 }
 </style>

@@ -6,12 +6,8 @@
 
 <script>
 export default {
-  data: () => ({
-
-  })
-}
+  data: () => ({}),
+};
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

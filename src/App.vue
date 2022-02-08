@@ -1,25 +1,22 @@
 <template>
   <div id="app">
     <NavigationSidebar />
-<!--    <router-view/>-->
   </div>
 </template>
 
 <script>
-import NavigationSidebar from './components/NavigationSidebar.vue'
+import NavigationSidebar from "./components/NavigationSidebar.vue";
 export default {
   components: {
-    NavigationSidebar
+    NavigationSidebar,
   },
-  name: 'App',
-  data: () => ({
-
-  }),
-}
+  name: "App",
+  data: () => ({}),
+};
 </script>
 
 <style lang="scss">
-*{
+* {
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
@@ -27,11 +24,10 @@ export default {
   @font-face {
     font-family: "CircularFontFamily";
     src: local("CircularFontFamily"),
-    url("./fonts/CircularFontFamily/Gilroy-Regular.ttf");
+      url("./fonts/CircularFontFamily/Gilroy-Regular.ttf");
   }
 }
-p{
+p {
   margin-bottom: 0;
 }
-
 </style>

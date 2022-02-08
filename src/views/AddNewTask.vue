@@ -1,19 +1,13 @@
 <template>
   <div class="app">
-    <p>
-      New Task
-    </p>
+    <p>New Task</p>
   </div>
 </template>
 
 <script>
 export default {
-  data: () => ({
-
-  })
-}
+  data: () => ({}),
+};
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

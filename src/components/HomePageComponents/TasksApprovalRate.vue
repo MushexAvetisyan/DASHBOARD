@@ -4,16 +4,24 @@
       <h4>TASKS APPROVAL RATE</h4>
       <div class="TasksFilter">
         <select class="Tasks_Phases" v-model="Tasks_filter">
-          <option class="FilterTr" v-for="item in TasksTags" v-bind:key="item" v-bind:value="item">{{ item.trim()}}</option>
+          <option
+            class="FilterTr"
+            v-for="item in TasksTags"
+            v-bind:key="item"
+            v-bind:value="item"
+          >
+            {{ item.trim() }}
+          </option>
         </select>
       </div>
       <apexchart
-          class="apex_task"
-            width="580"
-          height="300"
-          type="bar"
-          :options="Tasks_Approval_Options"
-          :series="Approval_Tasks_Series">
+        class="apex_task"
+        width="580"
+        height="300"
+        type="bar"
+        :options="Tasks_Approval_Options"
+        :series="Approval_Tasks_Series"
+      >
       </apexchart>
     </section>
   </div>
@@ -23,54 +31,56 @@
 import VueApexCharts from "vue-apexcharts";
 export default {
   components: {
-    VueApexCharts
+    VueApexCharts,
   },
   data: () => ({
-    TasksTags: ["All Phases", "Last", "New",],
+    TasksTags: ["All Phases", "Last", "New"],
     Tasks_filter: "All Phases",
 
     Tasks_Approval_Options: {
       chart: {
-        id: 'Tasks_Approval_Chart',
-        animation:{
-          speed: 900
+        id: "Tasks_Approval_Chart",
+        toolbar: {
+          show: false,
+        },
+        animation: {
+          speed: 900,
         },
       },
 
+      labels: ["Reviewed tasks (26)", "Not Reviewed tasks (18)"],
+      colors: ["#43BCCD", "#6D32A5"],
 
-      labels: ['Reviewed tasks (26)', 'Not Reviewed tasks (18)'],
-      colors: ['#43BCCD', '#6D32A5'],
-
-      yaxis:{
-        show: false
+      yaxis: {
+        show: false,
       },
 
       xaxis: {
         labels: {
-          show: false
+          show: false,
         },
         axisBorder: {
-          show: false
-        }
+          show: false,
+        },
       },
 
       dataLabels: {
         enabled: true,
         formatter: function (val, opts) {
-          return val + '%'
+          return val + "%";
         },
         offsetY: -20,
         style: {
-          colors:  ['#000000']
-        }
+          colors: ["#000000"],
+        },
       },
 
       legend: {
         show: true,
-        position: 'left',
+        position: "left",
         offsetY: 80,
         offsetX: 0,
-        fontSize: '13px',
+        fontSize: "13px",
         fontWeight: 600,
         markers: {
           radius: 20,
@@ -80,57 +90,56 @@ export default {
           offsetX: -5,
         },
         itemMargin: {
-          vertical: 15
-        }
+          vertical: 15,
+        },
       },
 
-
-
-      plotOptions:{
-        bar:{
+      plotOptions: {
+        bar: {
           distributed: true,
           borderRadius: 10,
-          columnWidth: '35%',
+          columnWidth: "35%",
           dataLabels: {
-            position: 'top',
-
+            position: "top",
           },
         },
       },
 
       grid: {
-        show: false
+        show: false,
       },
     },
 
-    Approval_Tasks_Series: [{
-      name: '',
-      data: [71, 29,]
-    }]
-  })
-}
+    Approval_Tasks_Series: [
+      {
+        name: "",
+        data: [71, 29],
+      },
+    ],
+  }),
+};
 </script>
 
 <style scoped lang="scss">
-.app{
+.app {
   padding-bottom: 150px;
 }
-.Approval_rate{
+.Approval_rate {
   width: 580px;
   height: 380px;
   background-color: white;
   margin-top: 35px;
   margin-left: 185px;
   border-radius: 40px;
-  h4{
+  h4 {
     text-align: left;
     color: #a3a6b9;
     font-size: 14px;
     padding: 25px 0 0 30px;
   }
 }
-.Tasks_Phases{
-  ::v-deep{
+.Tasks_Phases {
+  ::v-deep {
     outline: none;
     border: none;
     background-color: white;
@@ -142,16 +151,16 @@ export default {
     text-align: center;
   }
 }
-.TasksFilter{
+.TasksFilter {
   cursor: pointer;
   position: relative;
   right: 60px;
   top: -20px;
 }
 
-.apex_task{
-  ::v-deep{
-    .apexcharts-legend-series:first-of-type{
+.apex_task {
+  ::v-deep {
+    .apexcharts-legend-series:first-of-type {
       padding-right: 22px;
     }
   }

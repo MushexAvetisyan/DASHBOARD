@@ -14,24 +14,24 @@ export default {
     return {
       Accordion: {
         count: 0,
-        active: null
-      }
+        active: null,
+      },
     };
   },
   provide() {
     return { Accordion: this.Accordion };
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.accord{
+.accord {
   margin-top: 40px;
   width: 80%;
   background-color: white;
   border-radius: 20px;
   padding-bottom: 35px;
-  h4{
+  h4 {
     text-align: left;
     color: #a3a6b9;
     font-size: 14px;
