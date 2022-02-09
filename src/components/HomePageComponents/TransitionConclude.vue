@@ -12,7 +12,7 @@
         </p>
       </div>
       <div class="add_or_conclude">
-        <router-link to="/NewTask">
+        <router-link to="/TaskTransitionsMettings">
           <button class="btn-task">ADD OTHER TASKS</button>
         </router-link>
         <router-link to="/MyTransitions">
@@ -70,6 +70,7 @@ export default {
     margin-left: 10px;
     border: none;
     letter-spacing: 2px;
+    padding: 17px;
   }
 
   .btn-color-second {
