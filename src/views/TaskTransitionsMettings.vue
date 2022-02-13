@@ -5,28 +5,25 @@
       <div class="TasksTable">
         <button class="AddMetting">
           <img src="../assets/images/Callendar.svg" alt="" />
-          <p>ADD MEETING(S)</p>
+          <span>ADD MEETING(S)</span>
         </button>
-        <button class="SelectAll">
+        <button class="SelectAll" @click="checkboxesHandler">
           <img src="../assets/images/SelectAll.svg" alt="" />
-          <p>SELECT ALL</p>
+          <span>SELECT ALL</span>
         </button>
         <button :disabled="isActive" class="AddToScope">
-          <p>ADD TO SCOPE</p>
+          <span>ADD TO SCOPE</span>
         </button>
         <button :disabled="isActive" class="Mark">
-          <p>MARK AS UNSCOPE</p>
+          <span>MARK AS UNSCOPE</span>
         </button>
       </div>
     </div>
     <table class="table">
       <thead>
         <tr>
-<!--          <th>-->
-<!--            <input type="checkbox" @click="selectAll" v-model="allSelected" />-->
-<!--          </th>-->
           <th>SUBJECT</th>
-          <th>ORGANISER</th>
+          <th style="padding-left: 10px">ORGANISER</th>
           <th>DATE</th>
           <th>TIME</th>
           <th>TYPE</th>
@@ -37,17 +34,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in users" :key="user">
-          <td align="CENTER" width="180px">
+        <tr v-for="user in users" :key="user.id">
+          <td align="CENTER" width="20px">
             <input
-                class="checking"
+              class="checking"
               type="checkbox"
-              v-model="userIds"
-              @click="select"
-              :value="user"
+              v-model="checkedUsers"
+              :value="user.id"
             />
           </td>
-          <td><span class="check">{{ user.subject }}</span></td>
+          <td>
+            <span class="check">{{ user.subject }}</span>
+          </td>
           <td>{{ user.organiser }}</td>
           <td>{{ user.date }}</td>
           <td>{{ user.time }}</td>
@@ -69,7 +67,7 @@
         </tr>
       </tbody>
     </table>
-    <span>Selected Ids: {{ userIds }}</span>
+    <span>Selected Ids: {{ checkedUsers }}</span>
     <router-view />
   </div>
 </template>
@@ -82,6 +80,7 @@ export default {
   },
   data: () => ({
     isActive: true,
+    checkedUsers: [],
     users: [
       {
         id: 1,
@@ -99,7 +98,7 @@ export default {
         }),
         type: "Recurring",
         frequency: "Low",
-        note: "Lorem Ipsum",
+        note: "Add",
         source: require("@/assets/images/Outlook.png"),
         status: "Scoped",
       },
@@ -225,6 +224,17 @@ export default {
       },
     ],
   }),
+  methods: {
+    checkboxesHandler() {
+      if (!this.checkedUsers.length) {
+        for (let i = 0; i < this.users.length; i++) {
+          this.checkedUsers.push(this.users[i].id);
+        }
+      } else {
+        this.checkedUsers = [];
+      }
+    },
+  },
 };
 </script>
 
@@ -380,8 +390,8 @@ export default {
     }
     input {
       cursor: pointer;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       position: relative;
       top: 4px;
     }
