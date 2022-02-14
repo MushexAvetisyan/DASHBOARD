@@ -51,7 +51,12 @@
           <td>{{ user.time }}</td>
           <td>{{ user.type }}</td>
           <td>{{ user.frequency }}</td>
-          <td>{{ user.note }}</td>
+          <td>
+            <span id="showModal" @click="showModal(user.id)">{{
+              user.note
+            }}</span>
+            <Modal v-if="openedModal === user.id" @close="close" @change="saveChange"></Modal>
+          </td>
           <td>
             <img
               width="25px"
@@ -73,10 +78,12 @@
 </template>
 
 <script>
+import Modal from "@/components/TaskTransitionMettingsComponents/Modal";
 import PageNavigation from "@/components/TaskTransitionMettingsComponents/PageNavigation";
 export default {
   components: {
     PageNavigation,
+    Modal,
   },
   data: () => ({
     isActive: true,
@@ -223,6 +230,7 @@ export default {
         status: "Scoped",
       },
     ],
+    openedModal: '',
   }),
   methods: {
     checkboxesHandler() {
@@ -234,6 +242,18 @@ export default {
         this.checkedUsers = [];
       }
     },
+    showModal(id) {
+      this.openedModal = id
+    },
+    saveChange(val) {
+      console.log('save')
+      this.openedModal = null
+
+    },
+    close() {
+      console.log('close')
+      this.openedModal = null
+    }
   },
 };
 </script>
@@ -362,6 +382,7 @@ export default {
     }
     tr {
       border-bottom: 2px solid #eaeaec;
+      position: relative;
       .checking {
         -moz-appearance: none;
         -webkit-appearance: none;
@@ -387,6 +408,9 @@ export default {
     }
     td {
       padding: 10px 0;
+      #showModal {
+        cursor: pointer;
+      }
     }
     input {
       cursor: pointer;
