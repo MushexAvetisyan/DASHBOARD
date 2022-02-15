@@ -54,6 +54,11 @@ export default {
   span{
     color: #6d32a5;
   }
+  a{
+    p{
+      float: left;
+    }
+  }
 }
 .navbar{
   color: black;

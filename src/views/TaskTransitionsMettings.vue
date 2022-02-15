@@ -23,7 +23,7 @@
       <thead>
         <tr>
           <th>SUBJECT</th>
-          <th style="padding-left: 10px">ORGANISER</th>
+          <th style="padding-left: 15px">ORGANISER</th>
           <th>DATE</th>
           <th>TIME</th>
           <th>TYPE</th>
@@ -55,7 +55,12 @@
             <span id="showModal" @click="showModal(user.id)">{{
               user.note
             }}</span>
-            <Modal v-if="openedModal === user.id" @close="close" @change="saveChange"></Modal>
+            <Modal
+              v-if="openedModal === user.id"
+              @close="close"
+              @change="saveChange"
+              @onChange="value => onInputChange(value, user.id)"
+            ></Modal>
           </td>
           <td>
             <img
@@ -90,7 +95,7 @@ export default {
     checkedUsers: [],
     users: [
       {
-        id: 1,
+        id: 0,
         subject: "Lorem Ipsum dolor",
         organiser: "frank.murphy@test.com",
         date: new Date().toLocaleString("en-us", {
@@ -110,7 +115,7 @@ export default {
         status: "Scoped",
       },
       {
-        id: 2,
+        id: 1,
         subject: "Lorem Ipsum Dolor",
         organiser: "vic.reynolds@test.com",
         date: new Date().toLocaleString("en-us", {
@@ -130,7 +135,7 @@ export default {
         status: "Scoped",
       },
       {
-        id: 3,
+        id: 2,
         subject: "Lorem Ipsum Dolor",
         organiser: "gina.jabowski@test.com",
         date: new Date().toLocaleString("en-us", {
@@ -150,9 +155,29 @@ export default {
         status: "Scoped",
       },
       {
-        id: 4,
+        id: 3,
         subject: "Lorem Ipsum Dolor",
         organiser: "jessi.glaser@test.com",
+        date: new Date().toLocaleString("en-us", {
+          month: "long",
+          day: "numeric",
+          year: "numeric",
+        }),
+        time: new Date().toLocaleString("en-us", {
+          hour12: true,
+          hour: "numeric",
+          minute: "numeric",
+        }),
+        type: "Recurring",
+        frequency: "Low",
+        note: "Lorem Ipsum",
+        source: require("@/assets/images/Outlook.png"),
+        status: "Scoped",
+      },
+      {
+        id: 4,
+        subject: "Lorem Ipsum Dolor",
+        organiser: "jay.bilzerian@test.com",
         date: new Date().toLocaleString("en-us", {
           month: "long",
           day: "numeric",
@@ -209,28 +234,8 @@ export default {
         source: require("@/assets/images/Outlook.png"),
         status: "Scoped",
       },
-      {
-        id: 7,
-        subject: "Lorem Ipsum Dolor",
-        organiser: "jay.bilzerian@test.com",
-        date: new Date().toLocaleString("en-us", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        }),
-        time: new Date().toLocaleString("en-us", {
-          hour12: true,
-          hour: "numeric",
-          minute: "numeric",
-        }),
-        type: "Recurring",
-        frequency: "Low",
-        note: "Lorem Ipsum",
-        source: require("@/assets/images/Outlook.png"),
-        status: "Scoped",
-      },
     ],
-    openedModal: '',
+    openedModal: "",
   }),
   methods: {
     checkboxesHandler() {
@@ -243,17 +248,19 @@ export default {
       }
     },
     showModal(id) {
-      this.openedModal = id
+      this.openedModal = id;
     },
     saveChange(val) {
-      console.log('save')
-      this.openedModal = null
-
+      console.log("save");
+      this.openedModal = null;
+    },
+    onInputChange(value, id) {
+      this.users[id].note = value
     },
     close() {
-      console.log('close')
-      this.openedModal = null
-    }
+      console.log("close");
+      this.openedModal = null;
+    },
   },
 };
 </script>

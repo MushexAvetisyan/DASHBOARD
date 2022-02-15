@@ -14,7 +14,7 @@
 
             <div class="modal-body">
               <slot name="body">
-                <input type="text" placeholder="Type your note here"/>
+                <input type="text" placeholder="Type your note here" @change="onChange"/>
               </slot>
             </div>
 
@@ -37,6 +37,11 @@ export default {
   data: () => ({
 
   }),
+  methods: {
+    onChange(event) {
+      this.$emit('onChange', event.target.value)
+    }
+  }
 };
 </script>
 
@@ -44,8 +49,8 @@ export default {
 .modal-mask {
   position: absolute;
   z-index: 9998;
-  right: 330px;
-  bottom: 0;
+  right: 285px;
+  bottom: 50px;
   height: 100%;
   display: table;
   transition: opacity 0.3s ease;
@@ -87,8 +92,6 @@ export default {
 
 .modal-close-button {
   float: right;
-  /* width: 20px; */
-  /* height: 20px; */
   color: black;
   cursor: pointer;
   font-size: 25px;
