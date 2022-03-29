@@ -3,7 +3,7 @@
     <div id="nav">
       <header :class="{ fullSize: isFullSize }" class="header" role="banner">
         <div class="logo">
-          <router-link class="ss" to="/">
+          <router-link class="ss" to="/Home">
             <span>
               <img
                 alt=""
