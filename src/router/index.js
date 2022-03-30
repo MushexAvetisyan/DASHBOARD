@@ -8,12 +8,12 @@ const routes = [
   {
     path: "/",
     name: "Dashboard",
-    component: DashboardMainPage
+    component: DashboardMainPage,
   },
   {
     path: "/Home",
     name: "Home",
-    component: () => import("../views/Home.vue")
+    component: () => import("../views/Home.vue"),
   },
   {
     path: "/Refresh",
@@ -41,52 +41,61 @@ const routes = [
     component: () => import("../views/AddingNewTransition.vue"),
   },
 
-
-
-
-
-
   {
     path: "/Overview",
     name: "Overview",
-    component: () => import("../components/TaskTransitionMettingsComponents/NavbarComponents/Overview.vue")
+    component: () =>
+      import(
+        "../components/TaskTransitionMettingsComponents/NavbarComponents/Overview.vue"
+      ),
   },
 
   {
     path: "/ActivityLog",
     name: "Activity",
-    component: () => import("../components/TaskTransitionMettingsComponents/NavbarComponents/ActivityLog.vue")
+    component: () =>
+      import(
+        "../components/TaskTransitionMettingsComponents/NavbarComponents/ActivityLog.vue"
+      ),
   },
   {
     path: "/Members",
     name: "members",
-    component: () => import("../components/TaskTransitionMettingsComponents/NavbarComponents/Members.vue")
+    component: () =>
+      import(
+        "../components/TaskTransitionMettingsComponents/NavbarComponents/Members.vue"
+      ),
   },
   {
     path: "/Accesses",
     name: "accesses",
-    component: () => import("../components/TaskTransitionMettingsComponents/NavbarComponents/Accesses.vue")
+    component: () =>
+      import(
+        "../components/TaskTransitionMettingsComponents/NavbarComponents/Accesses.vue"
+      ),
   },
   {
     path: "/Tasks",
     name: "tasks",
-    component: () => import("../components/TaskTransitionMettingsComponents/NavbarComponents/Tasks.vue")
+    component: () =>
+      import(
+        "../components/TaskTransitionMettingsComponents/NavbarComponents/Tasks.vue"
+      ),
   },
   {
     path: "/Assets",
     name: "assets",
-    component: () => import("../components/TaskTransitionMettingsComponents/NavbarComponents/Assets.vue")
+    component: () =>
+      import(
+        "../components/TaskTransitionMettingsComponents/NavbarComponents/Assets.vue"
+      ),
   },
-
 
   {
     path: "/TaskTransitionsMettings",
     name: "CreateNewTask",
     component: () => import("../views/TaskTransitionsMettings.vue"),
   },
-
-
-
 ];
 
 const router = new VueRouter({
