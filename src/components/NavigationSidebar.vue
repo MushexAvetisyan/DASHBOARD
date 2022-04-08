@@ -3,7 +3,7 @@
     <div id="nav">
       <header :class="{ fullSize: isFullSize }" class="header" role="banner">
         <div class="logo">
-          <router-link class="ss" to="/Home">
+          <span class="ss" >
             <span>
               <img
                 alt=""
@@ -19,13 +19,21 @@
                 >TransitPru
               </span>
             </transition>
-          </router-link>
+          </span>
         </div>
 
         <div class="nav-wrap">
           <nav class="main-nav" role="navigation">
             <ul class="list-hover-slide">
               <router-link to="/">
+                <li>
+                  <img alt="" src="../assets/images/house.svg" />
+                  <span v-if="isFullSize" :class="{ Show: isShow }"
+                  >Home</span
+                  >
+                </li>
+              </router-link>
+              <router-link to="/Home">
                 <li>
                   <img alt="" src="../assets/images/house.svg" />
                   <span v-if="isFullSize" :class="{ Show: isShow }"
@@ -136,6 +144,8 @@ $white-off: #dfdbd9;
     border: none !important;
     filter: none !important;
     display: flex;
+    cursor: pointer;
+    margin-top: 15px;
   }
 }
 

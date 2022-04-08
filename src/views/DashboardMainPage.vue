@@ -23,6 +23,16 @@
           >
         </div>
       </div>
+      <div class="line"></div>
+      <div class="users_content">
+        <h2>Users involved</h2>
+        <div class="users_type">
+          <div v-for="(item, index) in UserTypes"
+          :key>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +52,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.show = false;
-    }, 4000);
+    }, 1000);
     clearTimeout(() => {
       this.LoaderOff = false;
     });
@@ -57,6 +67,7 @@ export default {
   background-color: white;
   position: absolute;
   top: 0;
+  border-bottom: 1px solid black;
   left: 0;
   right: 0;
   ::v-deep {
@@ -69,9 +80,30 @@ export default {
     }
   }
 }
+.line{
+  border-bottom: 2px solid #DFDCDC;
+  width: 80%;
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+.users_content{
+  width: 80%;
+  h2{
+    text-align: left;
+    color: black;
+    font-size: 35px;
+  }
+  .users_type{
+    height: 250px;
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 20px;
+  }
+}
 .Main_Container {
   height: 100vh;
   background-color: #f5f5f6;
+  z-index: 11;
   .welcome {
     display: flex;
     align-items: center;
