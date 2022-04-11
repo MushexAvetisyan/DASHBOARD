@@ -27,9 +27,10 @@
       <div class="users_content">
         <h2>Users involved</h2>
         <div class="users_type">
-          <div v-for="(item, index) in UserTypes"
-          :key>
-
+          <div v-for="(item, index) in UserTypes" :key="index">
+            <img :src="item.img" alt="user">
+            <h2>{{item.Rule}}</h2>
+            <p>{{item.Description}}</p>
           </div>
         </div>
       </div>
@@ -45,6 +46,29 @@ export default {
     icon1: require("@/assets/Logo.svg"),
     show: true,
     LoaderOff: true,
+
+    UserTypes: [
+      {
+        img: require("@/assets/images/Creator.svg"),
+        Rule: "Creator",
+        Description: "lorem ipsum dolor sit amet,lorem ipsum dolor sit amet",
+      },
+      {
+        img: require("@/assets/images/Creator.svg"),
+        Rule: "Transitor",
+        Description: "lorem ipsum dolor sit amet,lorem ipsum dolor sit amet",
+      },
+      {
+        img: require("@/assets/images/Creator.svg"),
+        Rule: "Creator",
+        Description: "lorem ipsum dolor sit amet,lorem ipsum dolor sit amet",
+      },
+      {
+        img: require("@/assets/images/Creator.svg"),
+        Rule: "Creator",
+        Description: "lorem ipsum dolor sit amet,lorem ipsum dolor sit amet",
+      },
+    ],
   }),
   components: {
     GridLoader,
@@ -80,20 +104,20 @@ export default {
     }
   }
 }
-.line{
-  border-bottom: 2px solid #DFDCDC;
+.line {
+  border-bottom: 2px solid #dfdcdc;
   width: 80%;
   margin-top: 25px;
   margin-bottom: 40px;
 }
-.users_content{
+.users_content {
   width: 80%;
-  h2{
+  h2 {
     text-align: left;
     color: black;
     font-size: 35px;
   }
-  .users_type{
+  .users_type {
     height: 250px;
     margin-top: 30px;
     background-color: white;
