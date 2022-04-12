@@ -28,9 +28,9 @@
         <h2>Users involved</h2>
         <div class="users_type">
           <div v-for="(item, index) in UserTypes" :key="index">
-            <img :src="item.img" alt="user">
-            <h2>{{item.Rule}}</h2>
-            <p>{{item.Description}}</p>
+            <img :src="item.img" alt="user" />
+            <h2>{{ item.Rule }}</h2>
+            <p>{{ item.Description }}</p>
           </div>
         </div>
       </div>
@@ -51,22 +51,23 @@ export default {
       {
         img: require("@/assets/images/Creator.svg"),
         Rule: "Creator",
-        Description: "lorem ipsum dolor sit amet,lorem ipsum dolor sit amet",
+        Description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
       },
       {
-        img: require("@/assets/images/Creator.svg"),
+        img: require("@/assets/images/Transitor.svg"),
         Rule: "Transitor",
-        Description: "lorem ipsum dolor sit amet,lorem ipsum dolor sit amet",
+        Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
       },
       {
-        img: require("@/assets/images/Creator.svg"),
-        Rule: "Creator",
-        Description: "lorem ipsum dolor sit amet,lorem ipsum dolor sit amet",
+        img: require("@/assets/images/Transite.svg"),
+        Rule: "Transitee(s)",
+        Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
       },
       {
-        img: require("@/assets/images/Creator.svg"),
-        Rule: "Creator",
-        Description: "lorem ipsum dolor sit amet,lorem ipsum dolor sit amet",
+        img: require("@/assets/images/Company.svg"),
+        Rule: "Collaborator(s)",
+        Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
       },
     ],
   }),
@@ -122,6 +123,18 @@ export default {
     margin-top: 30px;
     background-color: white;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    div {
+      width: 250px;
+      h2 {
+        text-align: center !important;
+        font-size: 25px;
+      }
+      p{
+        font-size: 14px;
+      }
+    }
   }
 }
 .Main_Container {
