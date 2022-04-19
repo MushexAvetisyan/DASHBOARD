@@ -2,7 +2,7 @@
   <div>
     <transition name="fade" v-if="show">
       <div class="Welcome">
-        <GridLoader :size="200" :color="'#6D32A5'" />
+<!--        <GridLoader :size="200" :color="'#6D32A5'" />-->
       </div>
     </transition>
     <div class="Main_Container" v-show="LoaderOff">
@@ -34,6 +34,17 @@
           </div>
         </div>
       </div>
+      <div class="Type_content">
+        <h1>Transition steps</h1>
+        <div class="Transition_Steps">
+          <div class="Box" v-for="(item, index) in TransitionSteps" :key="index">
+            <h3>{{item.title}}</h3>
+            <img v-show="ShowColorIcons" v-if="ShowColorIcons === true" :src="item.TypeIcon" alt="">
+            <img :src="item.TypeIconColor" v-else alt="">
+            <p>{{item.StepDescription}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -44,9 +55,9 @@ export default {
   data: () => ({
     icon: require("@/assets/LoadLogo.svg"),
     icon1: require("@/assets/Logo.svg"),
-    show: true,
+    show: false,
+    ShowColorIcons: true,
     LoaderOff: true,
-
     UserTypes: [
       {
         img: require("@/assets/images/Creator.svg"),
@@ -70,10 +81,58 @@ export default {
         Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
       },
     ],
+    TransitionSteps: [
+      {
+        title: "Initiated",
+        TypeIcon: require("@/assets/images/Telegram.svg"),
+        TypeIconColor: require("@/assets/images/Telegram.svg"),
+        StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
+      },
+      {
+        title: "Tasks created",
+        TypeIcon: require("@/assets/images/Task.svg"),
+        TypeIconColor: require("@/assets/images/TaskColor.svg"),
+        StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
+      },
+      {
+        title: "Tasks approved",
+        TypeIcon: require("@/assets/images/TaskDone.svg"),
+        TypeIconColor: require("@/assets/images/TaskDoneColor.svg"),
+        StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
+      },
+      {
+        title: "Knowledge Transfer",
+        TypeIcon: require("@/assets/images/Knowledge.svg"),
+        TypeIconColor: require("@/assets/images/KnowledgeColor.svg"),
+        StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
+      },
+      {
+        title: "Production Parallel",
+        TypeIcon: require("@/assets/images/Production.svg"),
+        TypeIconColor: require("@/assets/images/ProductionColor.svg"),
+        StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
+      },
+      {
+        title: "Live execution",
+        TypeIcon: require("@/assets/images/Live.svg"),
+        TypeIconColor: require("@/assets/images/LiveColor.svg"),
+        StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
+      },
+      {
+        title: "Completed",
+        TypeIcon: require("@/assets/images/DoneTask.svg"),
+        TypeIconColor: require("@/assets/images/DoneTaskColor.svg"),
+        StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
+      }
+    ]
   }),
+
+
   components: {
     GridLoader,
   },
+
+
   mounted() {
     setTimeout(() => {
       this.show = false;
@@ -81,7 +140,12 @@ export default {
     clearTimeout(() => {
       this.LoaderOff = false;
     });
+    setTimeout(() => {
+      this.ShowColorIcons = false
+      this.TransitionSteps.title.style.color = "black"
+    }, 2000)
   },
+
 };
 </script>
 
@@ -129,11 +193,17 @@ export default {
       width: 250px;
       h2 {
         text-align: center !important;
-        font-size: 25px;
+        font-size: 20px;
+        font-weight: 500;
+        margin: 10px 0 10px 0;
       }
       p{
-        font-size: 14px;
+        font-size: 13px;
+        line-height: 25px;
       }
+    }
+    img{
+      margin-left: 20px;
     }
   }
 }
@@ -143,7 +213,7 @@ export default {
   z-index: 11;
   .welcome {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     width: 80%;
     .first_container {
       text-align: left;
@@ -161,6 +231,7 @@ export default {
       p {
         color: #b1b2b8;
         font-weight: 700;
+        font-size: 15px;
         margin-top: 10px;
         line-height: 30px;
       }
@@ -180,5 +251,35 @@ export default {
     background: #6d32a5;
     cursor: pointer;
   }
+}
+.Type_content{
+  width: 80%;
+  h1{
+    margin: 30px 0 30px 0;
+    text-align: left;
+    color: black;
+    font-size: 35px;
+  }
+}
+.Transition_Steps{
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  height: 250px;
+  background-color: white;
+  margin-top: 25px;
+  .Box{
+    width: 180px;
+  }
+  img{
+    margin: 15px 0 15px 0;
+  }
+  h3{
+    color: #727176;
+  }
+  p{
+    color: #727176;
+  }
+
 }
 </style>

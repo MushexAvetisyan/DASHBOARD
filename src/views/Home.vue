@@ -45,11 +45,6 @@ export default {
 </script>
 
 <style lang="scss">
-@font-face {
-  font-family: "CircularFontFamily";
-  src: local("CircularFontFamily"),
-    url("../fonts/CircularFontFamily/Gilroy-Regular.ttf");
-}
 .home {
   background-color: #f5f5f6;
   min-height: 100vh;

@@ -20,12 +20,7 @@ export default {
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  font-family: CircularFontFamily;
-  @font-face {
-    font-family: "CircularFontFamily";
-    src: local("CircularFontFamily"),
-      url("./fonts/CircularFontFamily/Gilroy-Regular.ttf");
-  }
+  font-family: system-ui;
 }
 p {
   margin-bottom: 0;
