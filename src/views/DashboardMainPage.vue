@@ -38,10 +38,10 @@
         <h1>Transition steps</h1>
         <div class="Transition_Steps">
           <div class="Box" v-for="(item, index) in TransitionSteps" :key="index">
-            <h3>{{item.title}}</h3>
-            <img v-show="ShowColorIcons" v-if="ShowColorIcons === true" :src="item.TypeIcon" alt="">
-            <img :src="item.TypeIconColor" v-else alt="">
-            <p>{{item.StepDescription}}</p>
+            <p  class="circle" v-show="index <= dots && index !== 0"></p>
+            <h3 class="transition" :style="ShowColorIcons && index <= count ? {color: item.textColor} : '' ">{{item.title}}</h3>
+            <img :style=" ShowColorIcons && index <= count ? { filter: item.IconColor } : '' " :src="item.TypeIcon" alt="">
+            <p class="transition" :style="ShowColorIcons && index <= count ? {color: item.textColor} : '' ">{{item.StepDescription}}</p>
           </div>
         </div>
       </div>
@@ -56,7 +56,10 @@ export default {
     icon: require("@/assets/LoadLogo.svg"),
     icon1: require("@/assets/Logo.svg"),
     show: false,
+    count: 0,
+    dots: 0,
     ShowColorIcons: true,
+    ShowDots: true,
     LoaderOff: true,
     UserTypes: [
       {
@@ -85,43 +88,49 @@ export default {
       {
         title: "Initiated",
         TypeIcon: require("@/assets/images/Telegram.svg"),
-        TypeIconColor: require("@/assets/images/Telegram.svg"),
+        textColor: "black",
         StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
       },
       {
         title: "Tasks created",
         TypeIcon: require("@/assets/images/Task.svg"),
-        TypeIconColor: require("@/assets/images/TaskColor.svg"),
+        IconColor: "invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%)",
+        textColor: "black",
         StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
       },
       {
         title: "Tasks approved",
         TypeIcon: require("@/assets/images/TaskDone.svg"),
-        TypeIconColor: require("@/assets/images/TaskDoneColor.svg"),
+        IconColor: "invert(65%) sepia(50%) saturate(653%) hue-rotate(112deg) brightness(90%) contrast(86%)",
+        textColor: "black",
         StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
       },
       {
         title: "Knowledge Transfer",
         TypeIcon: require("@/assets/images/Knowledge.svg"),
-        TypeIconColor: require("@/assets/images/KnowledgeColor.svg"),
+        IconColor: "invert(68%) sepia(19%) saturate(1111%) hue-rotate(139deg) brightness(94%) contrast(95%)",
+        textColor: "black",
         StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
       },
       {
         title: "Production Parallel",
         TypeIcon: require("@/assets/images/Production.svg"),
-        TypeIconColor: require("@/assets/images/ProductionColor.svg"),
+        IconColor: "invert(19%) sepia(75%) saturate(2472%) hue-rotate(259deg) brightness(91%) contrast(85%)",
+        textColor: "black",
         StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
       },
       {
         title: "Live execution",
         TypeIcon: require("@/assets/images/Live.svg"),
-        TypeIconColor: require("@/assets/images/LiveColor.svg"),
+        IconColor: "invert(36%) sepia(58%) saturate(5304%) hue-rotate(328deg) brightness(98%) contrast(96%)",
+        textColor: "black",
         StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
       },
       {
         title: "Completed",
         TypeIcon: require("@/assets/images/DoneTask.svg"),
-        TypeIconColor: require("@/assets/images/DoneTaskColor.svg"),
+        IconColor: "invert(51%) sepia(76%) saturate(2863%) hue-rotate(356deg) brightness(98%) contrast(106%)",
+        textColor: "black",
         StepDescription: "Lorem ipsum dolor sit amet, commodo consequat.",
       }
     ]
@@ -132,7 +141,6 @@ export default {
     GridLoader,
   },
 
-
   mounted() {
     setTimeout(() => {
       this.show = false;
@@ -140,11 +148,27 @@ export default {
     clearTimeout(() => {
       this.LoaderOff = false;
     });
-    setTimeout(() => {
-      this.ShowColorIcons = false
-      this.TransitionSteps.title.style.color = "black"
-    }, 2000)
+    let DotsInterval = setInterval( () => {
+      if (this.dots < this.TransitionSteps.length) {
+        this.dots++
+      }
+      else {
+        clearInterval(DotsInterval)
+      }
+    }, 1480)
+    let intervalForColor = setInterval(() => {
+      console.log('count', this.count)
+      console.log('TransitionSteps.length', this.TransitionSteps.length)
+      console.log('this.count', this.count)
+        if(this.count < this.TransitionSteps.length-1) {
+          this.count++
+        }
+        else {
+          clearInterval(intervalForColor)
+        }
+    }, 1500,)
   },
+
 
 };
 </script>
@@ -270,6 +294,19 @@ export default {
   margin-top: 25px;
   .Box{
     width: 180px;
+    .transition{
+      transition: 0.5s;
+    }
+    .circle{
+      width: 8px;
+      height: 8px;
+      border-radius: 50px;
+      background-color: #A3A6B9;
+      position: relative;
+      right: 105px;
+      transition: 0.3s;
+      top: 90px;
+    }
   }
   img{
     margin: 15px 0 15px 0;
