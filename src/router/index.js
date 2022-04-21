@@ -10,31 +10,37 @@ const routes = [
     name: "Dashboard",
     component: DashboardMainPage,
   },
+
   {
     path: "/Home",
     name: "Home",
     component: () => import("../views/Home.vue"),
   },
+
   {
     path: "/Refresh",
     name: "Refresh",
     component: () => import("../views/Refresh.vue"),
   },
+
   {
     path: "/Help",
     name: "Help",
     component: () => import("../views/Help.vue"),
   },
+
   {
     path: "/Profile",
     name: "Profile",
     component: () => import("../views/Profile.vue"),
   },
+
   {
     path: "/MyTransitions",
     name: "Transitions",
     component: () => import("../views/MyTransitions.vue"),
   },
+
   {
     path: "/AddNewTransition",
     name: "NewTransition",
@@ -58,6 +64,7 @@ const routes = [
         "../components/TaskTransitionMettingsComponents/NavbarComponents/ActivityLog.vue"
       ),
   },
+
   {
     path: "/Members",
     name: "members",
@@ -66,6 +73,7 @@ const routes = [
         "../components/TaskTransitionMettingsComponents/NavbarComponents/Members.vue"
       ),
   },
+
   {
     path: "/Accesses",
     name: "accesses",
@@ -74,6 +82,7 @@ const routes = [
         "../components/TaskTransitionMettingsComponents/NavbarComponents/Accesses.vue"
       ),
   },
+
   {
     path: "/Tasks",
     name: "tasks",
@@ -82,6 +91,7 @@ const routes = [
         "../components/TaskTransitionMettingsComponents/NavbarComponents/Tasks.vue"
       ),
   },
+  
   {
     path: "/Assets",
     name: "assets",

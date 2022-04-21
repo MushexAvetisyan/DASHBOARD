@@ -231,9 +231,6 @@ $white-off: #dfdbd9;
 }
 
 .NewTransition {
-  position: relative;
-  top: 110px;
-
   button {
     width: 55px;
     height: 55px;

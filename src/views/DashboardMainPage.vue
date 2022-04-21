@@ -18,8 +18,9 @@
           </p>
         </div>
         <div class="start_transition">
-          <router-link to="/Home"
-            ><button>START A TRANSITION</button></router-link
+          <router-link to="/NewTransition"
+            ><button>START A TRANSITION</button>
+          </router-link
           >
         </div>
       </div>
@@ -155,7 +156,7 @@ export default {
       else {
         clearInterval(DotsInterval)
       }
-    }, 1480)
+    }, 1430)
     let intervalForColor = setInterval(() => {
       console.log('count', this.count)
       console.log('TransitionSteps.length', this.TransitionSteps.length)
@@ -204,7 +205,7 @@ export default {
   h2 {
     text-align: left;
     color: black;
-    font-size: 35px;
+    font-size: 33px;
   }
   .users_type {
     height: 250px;
@@ -213,6 +214,7 @@ export default {
     border-radius: 20px;
     display: flex;
     align-items: center;
+    box-shadow: 0 0 45px -15px rgb(105 96 105 / 55%);
     div {
       width: 250px;
       h2 {
@@ -279,10 +281,10 @@ export default {
 .Type_content{
   width: 80%;
   h1{
-    margin: 30px 0 30px 0;
+    margin: 50px 0 50px 0;
     text-align: left;
     color: black;
-    font-size: 35px;
+    font-size: 33px;
   }
 }
 .Transition_Steps{
@@ -291,7 +293,7 @@ export default {
   align-items: center;
   height: 250px;
   background-color: white;
-  margin-top: 25px;
+  box-shadow: 0 0 45px -15px rgb(105 96 105 / 55%);
   .Box{
     width: 180px;
     .transition{
