@@ -12,7 +12,6 @@ import Antd from "ant-design-vue";
 import * as VueSpinnersCss from "vue-spinners-css";
 
 
-
 Vue.use(VueSpinnersCss)
 Vue.use(Antd);
 Vue.component("v-select", vSelect);

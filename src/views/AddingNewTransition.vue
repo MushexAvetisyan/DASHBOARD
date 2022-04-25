@@ -1,5 +1,9 @@
 <template>
-  <div class="app">Add New Transition</div>
+  <div class="app">
+    <div class="main">
+      <h2>NEW TRANSITION</h2>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -8,4 +12,6 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+</style>

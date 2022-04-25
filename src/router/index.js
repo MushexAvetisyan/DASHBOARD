@@ -91,7 +91,7 @@ const routes = [
         "../components/TaskTransitionMettingsComponents/NavbarComponents/Tasks.vue"
       ),
   },
-  
+
   {
     path: "/Assets",
     name: "assets",
@@ -106,6 +106,11 @@ const routes = [
     name: "CreateNewTask",
     component: () => import("../views/TaskTransitionsMettings.vue"),
   },
+  {
+    path: "/Registration",
+    name: "Registration",
+    component: () => import("../views/Registration.vue"),
+  }
 ];
 
 const router = new VueRouter({

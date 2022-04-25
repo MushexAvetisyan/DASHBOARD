@@ -18,7 +18,7 @@
           </p>
         </div>
         <div class="start_transition">
-          <router-link to="/NewTransition"
+          <router-link to="/AddNewTransition"
             ><button>START A TRANSITION</button>
           </router-link
           >

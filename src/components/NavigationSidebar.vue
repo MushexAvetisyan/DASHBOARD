@@ -25,6 +25,14 @@
         <div class="nav-wrap">
           <nav class="main-nav" role="navigation">
             <ul class="list-hover-slide">
+              <router-link to="/Registration">
+                <li>
+                  <img width="30px" style="filter: grayscale(100%)" height="30px" alt="" src="../assets/images/Creator.svg" />
+                  <span v-if="isFullSize" :class="{ Show: isShow }"
+                  >Registration</span
+                  >
+                </li>
+              </router-link>
               <router-link to="/">
                 <li>
                   <img alt="" src="../assets/images/house.svg" />
@@ -60,7 +68,7 @@
             </ul>
           </nav>
           <div class="NewTransition">
-            <router-link to="/AddingNewTransition">
+            <router-link to="/AddNewTransition">
               <button></button>
             </router-link>
           </div>
@@ -195,7 +203,7 @@ $white-off: #dfdbd9;
   ul {
     li {
       margin: 75px 0 75px 25px;
-      padding: 25px 120px 25px 15px;
+      padding: 25px 120px 25px 11px;
       display: flex;
       align-items: center;
     }
@@ -204,7 +212,6 @@ $white-off: #dfdbd9;
 
 .nav-wrap {
   position: relative;
-  top: 15%;
 }
 
 .account_notify {
